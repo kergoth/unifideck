@@ -411,7 +411,7 @@ The layout (AZERTY/QWERTY) is selected based on the Unifideck locale:
 ## Known limitations
 
 1. **Streaming only** — no games are downloaded or installed locally
-2. **Game Pass subscription required** — verified server-side (xbox.com) at launch
+2. **Without Game Pass, only the free titles** — an account with no plan still gets an xCloud session, but `/v2/titles` entitles it only to what Microsoft streams for free. Measured 2026-10-05, that was Fortnite alone. The login token cannot tell such an account apart (its `offeringid` is `XGPUWEB` too); the rows can, through `details.userSubscriptions` (`[]` without a plan). The sync keeps the free titles and shows "No Xbox Game Pass on this account…" (`SYNC_SKIPPED`, reason `free_titles_only`). Microsoft's ad-supported free tier for owned games (Xbox Wire, 2026-07-23; rows carry the `FERDINAND` program) is an Xbox Insider test and was not reachable from a test account; its titles should arrive through `hasEntitlement` unchanged
 3. **Requires Chromium** — installed via flatpak if missing
 4. **Network quality** — streaming depends on Internet connection
 5. **Controller works in Gaming Mode only** — input flows via Edge's Gamepad API and requires a *gamepad* Steam Input layout on the shortcut (see [Controller support (Steam Deck)](#controller-support-steam-deck)). Desktop Mode is unsupported.

@@ -34,7 +34,8 @@
       "noXboxProfile": "Xbox profili yok",
       "childAccount": "Çocuk hesabı",
       "regionUnavailable": "Bölge desteklenmiyor",
-      "clientRejected": "Unifideck'i güncelle"
+      "clientRejected": "Unifideck'i güncelle",
+      "itchKeyLimited": "itch.io API anahtarlarınızın hiçbiri kütüphanenizi okuyamıyor. API anahtarları sayfasında “Generate new API key” düğmesine basın, ardından tekrar giriş yapın."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "Kurulum için Ubisoft Connect açılamadı.",
     "ubisoftSignInExpired": "Ubisoft oturumu sona erdi",
     "ubisoftSignInExpiredMessage": "Kayıtlı Ubisoft oturumunuz artık kabul edilmiyor. Yeniden bağlanmak için Unifideck ayarlarından çıkış yapıp tekrar giriş yapın.",
+    "itchKeyRejected": "itch.io kütüphanesi eşitlenemiyor",
+    "itchKeyRejectedMessage": "itch.io kayıtlı API anahtarınızı reddetti, bu yüzden itch.io oyunlarınız eşitlenemiyor. Unifideck ayarlarından itch.io oturumunu kapatıp tekrar giriş yapın. Mevcut oyunlarınız görünmeye devam edecek.",
     "multipartDetected": "Çok parçalı indirme algılandı",
     "multipartMessage": "Lütfen sabırlı olun ve tamamlanmasını bekleyin",
     "downloadFailed": "İndirme Başarısız",
@@ -716,6 +719,7 @@
     "signInRequired": "Oynamak için Giriş Yapın",
     "syncSkippedNoSubscription": "Aktif bir Xbox Game Pass aboneliği bulunamadı. xCloud kütüphaneniz senkronize edilmedi.",
     "syncSkippedTierUnknown": "Xbox Game Pass aboneliği algılandı ancak abonelik düzeyi belirlenemedi. Kullanılamayan oyunların gösterilmesini önlemek için senkronizasyon atlandı.",
+    "syncFreeTitlesOnly": "Bu hesapta Xbox Game Pass yok. Yalnızca Microsoft'un ücretsiz yayınladığı oyunlar (Fortnite gibi) eşitlendi.",
     "subscriptionCheckFailed": "Xbox Game Pass aboneliği doğrulanamadı. xCloud senkronizasyonu atlandı. Bağlantınız kararlı olduğunda tekrar deneyin."
   },
   "playButton": {

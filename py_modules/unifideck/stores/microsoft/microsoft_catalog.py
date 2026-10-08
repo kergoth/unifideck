@@ -66,6 +66,8 @@ class MicrosoftCatalogReader:
         """Initialize the instance."""
         self._config = config
         self._config_manager = config_manager
+        self.has_subscription: bool | None = None
+        """What the last ``fetch_games`` saw (see ``_account_has_subscription``)."""
 
     async def fetch_games(
         self,
@@ -78,6 +80,7 @@ class MicrosoftCatalogReader:
         shortcut). ``[]`` only when ``/v2/titles`` answered and none of its
         titles are entitled.
         """
+        self.has_subscription = None
         if not session.gs_token or not session.regions:
             logger.warning(
                 "[MicrosoftCatalog] session has no gs_token/regions",
@@ -108,6 +111,7 @@ class MicrosoftCatalogReader:
         entitled = _entitled_titles(titles, base_uri)
         if entitled is None:
             return None
+        self.has_subscription = _account_has_subscription(entitled)
 
         product_ids = _unique_product_ids(entitled)
         if not product_ids:
@@ -241,6 +245,22 @@ def _entitled_titles(
         )
         return None
     return entitled
+
+def _account_has_subscription(entitled: list[dict[str, Any]]) -> bool | None:
+    """Whether the account streams through a Game Pass plan.
+
+    The login token cannot tell: a free account's ``xgpuweb`` login also
+    carries ``offeringid`` XGPUWEB. Each ``/v2/titles`` row can, in
+    ``details.userSubscriptions``: the user's own plans, ``[]`` for a free
+    account (measured 2026-10-05; that account was entitled to Fortnite
+    only). ``None`` when a row lacks the list, so a changed response shape
+    never reads as "no Game Pass".
+    """
+    plans = [(t.get("details") or {}).get("userSubscriptions") for t in entitled]
+    if not plans or not all(isinstance(p, list) for p in plans):
+        return None
+    return any(plans)
+
 
 def _unique_product_ids(entitled: list[dict[str, Any]]) -> list[str]:
     """Extract unique productIds preserving first-seen order."""

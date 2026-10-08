@@ -34,7 +34,8 @@
       "noXboxProfile": "Нет профиля Xbox",
       "childAccount": "Детская запись",
       "regionUnavailable": "Регион недоступен",
-      "clientRejected": "Обновите Unifideck"
+      "clientRejected": "Обновите Unifideck",
+      "itchKeyLimited": "Ни один из ваших API-ключей itch.io не может прочитать библиотеку. На странице API-ключей нажмите «Generate new API key», затем войдите снова."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "Не удалось запустить Ubisoft Connect для установки.",
     "ubisoftSignInExpired": "Срок входа в Ubisoft истёк",
     "ubisoftSignInExpiredMessage": "Сохранённые данные входа в Ubisoft больше не принимаются. Выйдите и войдите снова в настройках Unifideck, чтобы восстановить подключение.",
+    "itchKeyRejected": "Не удаётся синхронизировать библиотеку itch.io",
+    "itchKeyRejectedMessage": "itch.io отклонил сохранённый API-ключ, поэтому игры itch.io не синхронизируются. Выйдите из itch.io в настройках Unifideck и войдите снова. Текущий список игр останется без изменений.",
     "multipartDetected": "Обнаружена многокомпонентная загрузка",
     "multipartMessage": "Пожалуйста, подождите завершения процесса",
     "downloadFailed": "Загрузка не удалась",
@@ -716,6 +719,7 @@
     "signInRequired": "Войдите, чтобы играть",
     "syncSkippedNoSubscription": "Активная подписка Xbox Game Pass не найдена. Ваша библиотека xCloud не синхронизирована.",
     "syncSkippedTierUnknown": "Подписка Xbox Game Pass обнаружена, но уровень определить не удалось. Синхронизация пропущена во избежание показа недоступных игр.",
+    "syncFreeTitlesOnly": "На этой учётной записи нет Xbox Game Pass. Синхронизированы только игры, которые Microsoft транслирует бесплатно (например, Fortnite).",
     "subscriptionCheckFailed": "Не удалось проверить подписку Xbox Game Pass. Синхронизация xCloud пропущена. Попробуйте еще раз, когда подключение станет стабильным."
   },
   "playButton": {

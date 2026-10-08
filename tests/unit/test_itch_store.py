@@ -5,7 +5,7 @@ from pathlib import Path
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock
 
-from unifideck.core.types import StoreInfo
+from unifideck.core.types import Events, StoreInfo
 from unifideck.stores.itch.butlerd import ButlerdError
 from unifideck.stores.itch.store import ItchStore
 
@@ -69,6 +69,31 @@ async def test_library_without_butler_is_unreadable_not_empty(tmp_path: Path) ->
     store = _store(tmp_path)
     store.cli_path = None
     assert await store.get_library() is None
+
+
+async def test_a_refused_key_toasts_once_per_streak_and_keeps_shortcuts(tmp_path: Path) -> None:
+    # Rule 8: a 403 costs the whole itch.io library, so it is not log-only.
+    store = _store(tmp_path)
+    store.cli_path = "/bin/true"
+
+    async def refused() -> None:
+        store._library.key_rejected = True
+
+    async def readable() -> list[Any]:
+        store._library.key_rejected = False
+        return []
+
+    store._library.get_library = AsyncMock(side_effect=refused)  # type: ignore[method-assign]
+    assert await store.get_library() is None
+    assert await store.get_library() is None
+    toasts = [c for c in store._bus.emit.await_args_list if c.args[0] == Events.LAUNCHER_STAGE]
+    assert len(toasts) == 1
+    assert toasts[0].kwargs["i18n_key"] == "toasts.itchKeyRejectedMessage"
+    store._library.get_library = AsyncMock(side_effect=readable)  # type: ignore[method-assign]
+    assert await store.get_library() == []
+    store._library.get_library = AsyncMock(side_effect=refused)  # type: ignore[method-assign]
+    await store.get_library()
+    assert store._bus.emit.await_count == 2
 
 
 async def test_start_auth_needs_edge(tmp_path: Path) -> None:

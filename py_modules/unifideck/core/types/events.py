@@ -533,12 +533,17 @@ class SubscriptionTier(StrEnum):
     "skip the sync" (Sprint 18e Q1 decision) to avoid showing users
     games they can't actually stream.
 
+    FREE is an xCloud session with no subscription (the ``xgpuwebf2p``
+    offering). Its catalog holds only the titles Microsoft streams for
+    free, such as Fortnite, so the sync reads it like a paid tier.
+
     The enum inherits from str so members serialize directly to JSON
     for EventBus payloads: json.dumps(SubscriptionTier.ULTIMATE)
     produces "ultimate", which is what the frontend expects.
     """
 
     NONE = "none"
+    FREE = "free"
     ESSENTIAL = "essential"
     PREMIUM = "premium"
     ULTIMATE = "ultimate"

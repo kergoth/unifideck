@@ -86,6 +86,7 @@ class ItchStore(BrowserAuthRebuildMixin, StoreBase):
             stall_s=float(cfg["stall_timeout_seconds"]),
         )
         self._browser_monitor = browser_monitor
+        self._warned_key_rejected = False
         self._auth: ItchAuthFlow | None = None
         self._rebuild_auth_after_injection()
 
@@ -131,10 +132,28 @@ class ItchStore(BrowserAuthRebuildMixin, StoreBase):
         return await self._auth.logout()
 
     async def get_library(self, *, force: bool = False) -> list[Game] | None:
-        """Owned games; None (keep shortcuts) whenever butler cannot answer."""
+        """Owned games; None (keep shortcuts) whenever butler cannot answer.
+
+        A key itch.io refuses (403) costs the user the whole itch.io library,
+        so it raises one toast per streak rather than a log line on every
+        sync. Other unreadable states stay quiet, as for every store.
+        """
         if not self.cli_path:
             return None
-        return await self._library.get_library()
+        games = await self._library.get_library()
+        if not self._library.key_rejected:
+            self._warned_key_rejected = False
+        elif not self._warned_key_rejected:
+            self._warned_key_rejected = True
+            await self._bus.emit(
+                Events.LAUNCHER_STAGE,
+                severity="warning",
+                i18n_title_key="toasts.itchKeyRejected",
+                i18n_key="toasts.itchKeyRejectedMessage",
+                duration_ms=12000,
+                store="itch",
+            )
+        return games
 
     async def install_game(
         self, game_id: str, base_path: str | None = None,

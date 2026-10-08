@@ -34,7 +34,8 @@
       "noXboxProfile": "Brak profilu Xbox",
       "childAccount": "Konto dziecka",
       "regionUnavailable": "Region nieobsługiwany",
-      "clientRejected": "Zaktualizuj Unifideck"
+      "clientRejected": "Zaktualizuj Unifideck",
+      "itchKeyLimited": "Żaden z Twoich kluczy API itch.io nie może odczytać biblioteki. Na stronie kluczy API naciśnij „Generate new API key”, a następnie zaloguj się ponownie."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "Nie udało się otworzyć Ubisoft Connect w celu instalacji.",
     "ubisoftSignInExpired": "Logowanie do Ubisoft wygasło",
     "ubisoftSignInExpiredMessage": "Zapisane logowanie do Ubisoft nie jest już akceptowane. Wyloguj się i zaloguj ponownie w ustawieniach Unifideck, aby przywrócić połączenie.",
+    "itchKeyRejected": "Nie można zsynchronizować biblioteki itch.io",
+    "itchKeyRejectedMessage": "itch.io odrzuca zapisany klucz API, więc gry z itch.io nie mogą się zsynchronizować. Wyloguj się z itch.io w ustawieniach Unifideck i zaloguj ponownie. Obecne gry pozostaną widoczne.",
     "multipartDetected": "Wykryto pobieranie wieloczęściowe",
     "multipartMessage": "Prosimy o cierpliwość i oczekiwanie na ukończenie",
     "downloadFailed": "Pobieranie nie powiodło się",
@@ -716,6 +719,7 @@
     "signInRequired": "Zaloguj się, aby zagrać",
     "syncSkippedNoSubscription": "Nie wykryto aktywnej subskrypcji Xbox Game Pass. Twoja biblioteka xCloud nie została zsynchronizowana.",
     "syncSkippedTierUnknown": "Wykryto subskrypcję Xbox Game Pass, ale nie można określić poziomu subskrypcji. Pominięto synchronizację, aby zapobiec wyświetlaniu niedostępnych gier.",
+    "syncFreeTitlesOnly": "To konto nie ma Xbox Game Pass. Zsynchronizowano tylko gry, które Microsoft udostępnia w chmurze za darmo (np. Fortnite).",
     "subscriptionCheckFailed": "Nie można zweryfikować subskrypcji Xbox Game Pass. Pominięto synchronizację xCloud. Spróbuj ponownie, gdy połączenie będzie stabilne."
   },
   "playButton": {

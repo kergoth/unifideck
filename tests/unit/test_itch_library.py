@@ -214,3 +214,15 @@ async def test_tagged_games_cost_no_upload_lookups() -> None:
     })
     await ItchLibraryReader(daemon).get_library()
     assert "Fetch.GameUploads" not in [m for m, _ in daemon.calls]
+
+
+@pytest.mark.parametrize(("error", "rejected"), [
+    (ButlerdError("api key does not permit `profile:owned`", code=12000, api_status=403), True),
+    (ButlerdError("itch.io API error (500)", code=12000, api_status=500), False),
+    (TimeoutError("slow"), False),
+])
+async def test_a_403_marks_the_key_rejected(error: Exception, rejected: bool) -> None:
+    daemon = _FakeDaemon({"Profile.List": [_PROFILE], "Fetch.ProfileOwnedKeys": [error]})
+    reader = ItchLibraryReader(daemon)
+    assert await reader.get_library() is None
+    assert reader.key_rejected is rejected

@@ -65,6 +65,8 @@ const SYNC_SKIPPED_KEYS: Record<string, string> = {
   no_active_subscription: "microsoft.syncSkippedNoSubscription",
   subscription_tier_unknown: "microsoft.syncSkippedTierUnknown",
   subscription_check_error: "microsoft.subscriptionCheckFailed",
+  // Not a whole-store skip: the free titles synced, the Game Pass part did not.
+  free_titles_only: "microsoft.syncFreeTitlesOnly",
 };
 
 /**

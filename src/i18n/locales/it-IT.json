@@ -34,7 +34,8 @@
       "noXboxProfile": "Nessun profilo Xbox",
       "childAccount": "Account bambino",
       "regionUnavailable": "Regione esclusa",
-      "clientRejected": "Aggiorna Unifideck"
+      "clientRejected": "Aggiorna Unifideck",
+      "itchKeyLimited": "Nessuna delle tue chiavi API di itch.io può leggere la libreria. Nella pagina delle chiavi API, premi «Generate new API key», poi accedi di nuovo."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "Apertura di Ubisoft Connect fallita per l'installazione.",
     "ubisoftSignInExpired": "Accesso a Ubisoft scaduto",
     "ubisoftSignInExpiredMessage": "L'accesso a Ubisoft salvato non è più valido. Esci e accedi di nuovo dalle impostazioni di Unifideck per riconnetterti.",
+    "itchKeyRejected": "Impossibile sincronizzare la libreria itch.io",
+    "itchKeyRejectedMessage": "itch.io ha rifiutato la chiave API salvata, quindi i tuoi giochi itch.io non possono essere sincronizzati. Esci da itch.io nelle impostazioni di Unifideck e accedi di nuovo. I giochi esistenti restano visibili.",
     "multipartDetected": "Rilevato download multi-parte",
     "multipartMessage": "Si prega di pazientare e attendere il completamento",
     "downloadFailed": "Download fallito",
@@ -716,6 +719,7 @@
     "signInRequired": "Accedi per giocare",
     "syncSkippedNoSubscription": "Nessun abbonamento Xbox Game Pass attivo rilevato. La tua libreria xCloud non è stata sincronizzata.",
     "syncSkippedTierUnknown": "L'abbonamento Xbox Game Pass è stato rilevato ma non è stato possibile determinare il piano. Sincronizzazione saltata per evitare di elencare giochi non disponibili.",
+    "syncFreeTitlesOnly": "Nessun Xbox Game Pass su questo account. Sono stati sincronizzati solo i giochi che Microsoft trasmette gratuitamente (come Fortnite).",
     "subscriptionCheckFailed": "Impossibile verificare l'abbonamento Xbox Game Pass. Sincronizzazione xCloud saltata. Riprova quando la connessione si stabilizza."
   },
   "playButton": {

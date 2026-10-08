@@ -34,7 +34,8 @@
       "noXboxProfile": "无 Xbox 个人资料",
       "childAccount": "儿童帐户",
       "regionUnavailable": "地区不受支持",
-      "clientRejected": "请更新 Unifideck"
+      "clientRejected": "请更新 Unifideck",
+      "itchKeyLimited": "您的 itch.io API 密钥都无法读取游戏库。请在 API 密钥页面点击“Generate new API key”，然后重新登录。"
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "无法打开 Ubisoft Connect 以进行安装。",
     "ubisoftSignInExpired": "Ubisoft 登录已过期",
     "ubisoftSignInExpiredMessage": "已保存的 Ubisoft 登录信息不再有效。请在 Unifideck 设置中退出并重新登录以恢复连接。",
+    "itchKeyRejected": "无法同步 itch.io 游戏库",
+    "itchKeyRejectedMessage": "itch.io 拒绝了已保存的 API 密钥，因此无法同步您的 itch.io 游戏。请在 Unifideck 设置中退出 itch.io 并重新登录。您现有的游戏仍会显示。",
     "multipartDetected": "检测到多部分下载",
     "multipartMessage": "请耐心等待完成",
     "downloadFailed": "下载失败",
@@ -716,6 +719,7 @@
     "signInRequired": "需要登录以进行游玩",
     "syncSkippedNoSubscription": "未检测到有效的 Xbox Game Pass 会员资格。xCloud 游戏库同步已被跳过。",
     "syncSkippedTierUnknown": "检测到 Xbox Game Pass 订阅，但未能确认会员级别。为了避免显示无法运行的游戏，已跳过同步。",
+    "syncFreeTitlesOnly": "此账户没有 Xbox Game Pass。仅同步了 Microsoft 免费串流的游戏（例如 Fortnite）。",
     "subscriptionCheckFailed": "无法验证 Xbox Game Pass 订阅状态。已跳过 xCloud 同步。请在网络连接稳定时重试。"
   },
   "playButton": {

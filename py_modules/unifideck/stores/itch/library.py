@@ -124,6 +124,10 @@ class ItchLibraryReader:
 
     def __init__(self, daemon: ButlerDaemon) -> None:
         self._daemon = daemon
+        #: The last library read failed because itch.io refused the key (403:
+        #: scoped or revoked). Signing in again is the fix, so the store tells
+        #: the user instead of only logging it.
+        self.key_rejected = False
 
     async def profile_id(self) -> int | None:
         """The signed-in butler profile, or None when nobody is signed in."""
@@ -142,7 +146,9 @@ class ItchLibraryReader:
             installs = await self.installed_map()
         except (ButlerdError, OSError, TimeoutError) as e:
             logger.warning("[itch] library read failed: %s", e)
+            self.key_rejected = isinstance(e, ButlerdError) and e.api_status == 403
             return None
+        self.key_rejected = False
         owned_ids = {g["id"] for g in owned}
         extra = {g["id"]: g for g in collected if g["id"] not in owned_ids}
         candidates = [g for g in (*owned, *extra.values()) if is_game(g)]

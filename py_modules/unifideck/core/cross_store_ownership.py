@@ -42,8 +42,8 @@ from typing import Any
 from unifideck.core.game_identity import SteamApp, build_identity
 from unifideck.core.steam_appid_map import read_positive_steam_appid
 from unifideck.core.store_capabilities import SUBSCRIPTION_LIBRARY_STORES
+from unifideck.core.types import GameTag
 from unifideck.core.types.domain import Game
-from unifideck.core.types.events import GameTag
 
 #: Rows that do not mean "you have the game". DLC is the dangerous one: the
 #: mapping is a fuzzy title search, so a DLC titled like its base game can

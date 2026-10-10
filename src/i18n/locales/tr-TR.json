@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect istemcisi yanıt vermiyor",
       "ubisoftBootstrap": "Ubisoft Connect öneki yapılandırılamadı",
       "ubisoftUmuMissing": "umu-run bulunamadı. Ubisoft oyunları için gereklidir",
-      "generic": "Yükleme başarısız oldu. Detaylar için günlüklere bakın"
+      "generic": "Yükleme başarısız oldu. Detaylar için günlüklere bakın",
+      "claimRequired": "Önce bu oyunu itch.io'daki paketinden talep edin"
     },
     "unknown": "Bilinmeyen hata",
     "steamAppsUnavailable": "SteamClient.Apps API'si kullanılamıyor"
@@ -636,6 +637,14 @@
     "label": "Dil",
     "install": "Yükle",
     "cancel": "İptal Et"
+  },
+  "claimModal": {
+    "title": "Önce bu oyunu talep edin",
+    "description": "{{title}}, itch.io paketiniz \"{{bundle}}\" içinde ama henüz kitaplığınızda değil. Açılan sayfada paketi açın ve oyunun yanındaki Download düğmesine basın. Ardından pencereyi kapatın, kurulum devam eder.",
+    "descriptionNoBundle": "{{title}}, satın aldığınız bir itch.io paketinde ama henüz kitaplığınızda değil. Açılan sayfada paketi açın ve oyunun yanındaki Download düğmesine basın. Ardından pencereyi kapatın, kurulum devam eder.",
+    "open": "itch.io'yu aç",
+    "openFailed": "itch.io talep sayfası açılamadı",
+    "notClaimed": "Oyun talep edilmediği için kurulum başlamadı"
   },
   "accountSwitch": {
     "title": "Hesap Değişikliği Algılandı",

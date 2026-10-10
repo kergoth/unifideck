@@ -151,3 +151,65 @@ async def test_failed_uninstall_announces_nothing(tmp_path: Path) -> None:
     store._installer.uninstall = AsyncMock(return_value=Result(success=False, store="itch", error="x"))  # type: ignore[method-assign]
     assert not (await store.uninstall_game("1", delete_prefix=True)).success
     store._bus.emit.assert_not_awaited()
+
+
+# ── bundle claim ───────────────────────────────────────────────────────
+class _OwnershipDaemon:
+    """Answers the reads the claim hooks make; a claim flips ownership."""
+
+    def __init__(self, source: str, *, claims_on_refresh: bool) -> None:
+        self.source = source
+        self.claims_on_refresh = claims_on_refresh
+        self.calls: list[tuple[str, dict[str, Any]]] = []
+
+    async def call(self, method: str, params: dict[str, Any] | None = None, **_: Any) -> dict[str, Any]:
+        self.calls.append((method, params or {}))
+        if method == "Profile.List":
+            return {"profiles": [{"id": 42}]}
+        if method == "Fetch.GameOwnership":
+            return {"owned": True, "source": self.source, "bundleId": 520}
+        if method == "Fetch.ProfileOwnedBundles":
+            return {"items": [{"bundle": {"id": 520, "title": "Racial Justice"}}]}
+        if method == "Fetch.ProfileOwnedKeys":
+            if self.claims_on_refresh:
+                self.source = "download_key"
+            return {"items": []}
+        raise AssertionError(method)
+
+
+def _claim_store(tmp_path: Path, monkeypatch: Any, daemon: _OwnershipDaemon) -> ItchStore:
+    monkeypatch.setenv("HOME", str(tmp_path))
+    store = _store(tmp_path)
+    store.cli_path = "/bin/true"
+    store._daemon.call = daemon.call  # type: ignore[method-assign]
+    return store
+
+
+async def test_an_unclaimed_bundle_game_is_refused_before_queueing(tmp_path: Path, monkeypatch: Any) -> None:
+    store = _claim_store(tmp_path, monkeypatch, _OwnershipDaemon("bundle", claims_on_refresh=False))
+    assert (await store.install_precondition("2") or "").startswith("itch_claim_required:")
+    store = _claim_store(tmp_path, monkeypatch, _OwnershipDaemon("download_key", claims_on_refresh=False))
+    assert await store.install_precondition("2") is None
+
+
+async def test_begin_claim_points_the_next_shop_window_at_the_bundles_page(
+    tmp_path: Path, monkeypatch: Any,
+) -> None:
+    from unifideck.core.store_urls import take_storefront_target
+
+    store = _claim_store(tmp_path, monkeypatch, _OwnershipDaemon("bundle", claims_on_refresh=False))
+    info = await store.begin_claim("2")
+    assert info == {"url": "https://itch.io/my-purchases/bundles", "bundle_title": "Racial Justice"}
+    assert take_storefront_target("itch") == "https://itch.io/my-purchases/bundles"
+    assert take_storefront_target("itch") == ""  # one-time
+
+
+async def test_finish_claim_rereads_the_owned_keys(tmp_path: Path, monkeypatch: Any) -> None:
+    daemon = _OwnershipDaemon("bundle", claims_on_refresh=True)
+    store = _claim_store(tmp_path, monkeypatch, daemon)
+    assert await store.finish_claim("2") is True
+    refresh = next(p for m, p in daemon.calls if m == "Fetch.ProfileOwnedKeys")
+    assert refresh["fresh"] is True and refresh["profileId"] == 42
+    # Closed without claiming: still a bundle game.
+    store = _claim_store(tmp_path, monkeypatch, _OwnershipDaemon("bundle", claims_on_refresh=False))
+    assert await store.finish_claim("2") is False

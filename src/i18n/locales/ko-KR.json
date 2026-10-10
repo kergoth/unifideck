@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect 클라이언트가 응답하지 않습니다",
       "ubisoftBootstrap": "Ubisoft Connect 실행 환경(Prefix)을 설정하지 못했습니다",
       "ubisoftUmuMissing": "umu-run 파일을 찾을 수 없음. Ubisoft 게임 작동 필요",
-      "generic": "설치 실패. 세부 정보는 로그를 참조하세요"
+      "generic": "설치 실패. 세부 정보는 로그를 참조하세요",
+      "claimRequired": "먼저 itch.io의 번들에서 이 게임을 받으세요"
     },
     "unknown": "알 수 없는 오류",
     "steamAppsUnavailable": "SteamClient.Apps API를 사용할 수 없습니다"
@@ -636,6 +637,14 @@
     "label": "언어",
     "install": "설치",
     "cancel": "취소"
+  },
+  "claimModal": {
+    "title": "먼저 게임을 받으세요",
+    "description": "{{title}}은(는) itch.io 번들 \"{{bundle}}\"에 포함되어 있지만 아직 라이브러리에 없습니다. 열리는 페이지에서 번들을 열고 게임 옆의 Download를 누르세요. 그런 다음 창을 닫으면 설치가 계속됩니다.",
+    "descriptionNoBundle": "{{title}}은(는) 구매한 itch.io 번들에 포함되어 있지만 아직 라이브러리에 없습니다. 열리는 페이지에서 번들을 열고 게임 옆의 Download를 누르세요. 그런 다음 창을 닫으면 설치가 계속됩니다.",
+    "open": "itch.io 열기",
+    "openFailed": "itch.io 받기 페이지를 열 수 없습니다",
+    "notClaimed": "게임을 받지 않아 설치가 시작되지 않았습니다"
   },
   "accountSwitch": {
     "title": "계정 변경 감지됨",

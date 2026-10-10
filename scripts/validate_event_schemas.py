@@ -122,6 +122,7 @@ CANONICAL_SCHEMA: dict[str, set[str]] = {
     "STORE_AUTH_COMPLETE":          {"store"},
     "STORE_AUTH_FAILED":            {"error", "store"},
     "STORE_AUTH_STARTED":           {"store"},
+    "STORE_LIBRARY_READY":          {"store"},
     "STORE_LOGOUT":                 {"store"},
     "STORE_REGISTERED":             set(),
     "SYNC_CANCELLED":               set(),

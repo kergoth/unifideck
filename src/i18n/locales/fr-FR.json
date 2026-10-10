@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "Le client Ubisoft Connect ne répond pas",
       "ubisoftBootstrap": "Impossible de configurer le préfixe Ubisoft Connect",
       "ubisoftUmuMissing": "umu-run introuvable. Requis pour les jeux Ubisoft",
-      "generic": "L'installation a échoué. Consultez les journaux pour les détails"
+      "generic": "L'installation a échoué. Consultez les journaux pour les détails",
+      "claimRequired": "Récupérez d'abord ce jeu depuis son bundle sur itch.io"
     },
     "unknown": "Erreur inconnue",
     "steamAppsUnavailable": "API SteamClient.Apps indisponible"
@@ -636,6 +637,14 @@
     "label": "Langue",
     "install": "Installer",
     "cancel": "Annuler"
+  },
+  "claimModal": {
+    "title": "Récupérez d'abord ce jeu",
+    "description": "{{title}} fait partie de votre bundle itch.io « {{bundle}} », mais n'est pas encore dans votre bibliothèque. Sur la page qui s'ouvre, ouvrez le bundle et appuyez sur Download à côté du jeu. Fermez ensuite la fenêtre et l'installation continuera.",
+    "descriptionNoBundle": "{{title}} fait partie d'un bundle itch.io que vous avez acheté, mais n'est pas encore dans votre bibliothèque. Sur la page qui s'ouvre, ouvrez le bundle et appuyez sur Download à côté du jeu. Fermez ensuite la fenêtre et l'installation continuera.",
+    "open": "Ouvrir itch.io",
+    "openFailed": "Impossible d'ouvrir la page itch.io pour récupérer le jeu",
+    "notClaimed": "Le jeu n'a pas été récupéré, l'installation n'a donc pas démarré"
   },
   "accountSwitch": {
     "title": "Changement de compte détecté",

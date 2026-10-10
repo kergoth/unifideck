@@ -12,6 +12,11 @@
  *    Selective Downloads titles, where the language packs are
  *    separate downloads; everything else comes back empty and
  *    installs without a prompt.
+ *  - A game paid for but not yet claimed (an itch.io bundle game, tag
+ *    `claim_required`): the claim page opens first
+ *    (`services/store/claim-flow.tsx`). Also run when `install_game`
+ *    answers `*_claim_required`, for a tile whose tags predate the claim
+ *    rule, then the install is retried once.
  *  - Other stores: pass straight through.
  */
 import { useCallback, useState } from "react";
@@ -26,6 +31,11 @@ import { pickStorageForInstall } from "../components/modals/PickStorageModal";
 import type { Game, Result } from "../types/api";
 import type { StorageLocationsResponse } from "../types/downloads";
 import { storeHasCapability } from "./useStoreCapability";
+import {
+  claimBeforeInstall,
+  isClaimRequiredError,
+  needsClaim,
+} from "../services/store/claim-flow";
 
 /** Steam bridge shape — same minimal surface useGameActions
  *  consumes. */
@@ -90,6 +100,25 @@ export function useInstallFlow(bridge: SteamBridgeShape): UseInstallFlowResult {
     async (game: Game): Promise<Result | null> => {
       setWorking(true);
       try {
+        if (needsClaim(game)) {
+          const claim = await claimBeforeInstall(game);
+          if (!claim?.success) return claim;
+        }
+        const install = async (opts: {
+          storage: string;
+          language?: string;
+        }): Promise<Result | null> => {
+          const args = { ...opts, title: game.title };
+          const result = await actions.install(
+            game.store,
+            game.store_game_id,
+            args,
+          );
+          if (!isClaimRequiredError(result?.error)) return result;
+          const claim = await claimBeforeInstall(game);
+          if (!claim?.success) return claim ?? result;
+          return actions.install(game.store, game.store_game_id, args);
+        };
         // `useStorageConfig` fetches once at row-mount time, which can be
         // long before the user opens this picker (e.g. an SD card inserted
         // after the library grid rendered). Re-fetch here so newly
@@ -137,10 +166,7 @@ export function useInstallFlow(bridge: SteamBridgeShape): UseInstallFlowResult {
             game.store_game_id,
             storage,
           );
-          return await actions.install(game.store, game.store_game_id, {
-            storage,
-            title: game.title,
-          });
+          return await install({ storage });
         }
         const langs = await (fetchLangs === "gog"
           ? getGogLangs(game.store_game_id)
@@ -148,12 +174,7 @@ export function useInstallFlow(bridge: SteamBridgeShape): UseInstallFlowResult {
         ).catch(() => null);
         const list = langs?.languages ?? [];
         if (list.length <= 1) {
-          const language = list[0];
-          return await actions.install(game.store, game.store_game_id, {
-            language,
-            storage,
-            title: game.title,
-          });
+          return await install({ language: list[0], storage });
         }
         const language = await pickLanguageViaModal(
           game.title,
@@ -161,11 +182,7 @@ export function useInstallFlow(bridge: SteamBridgeShape): UseInstallFlowResult {
           langs?.labels,
         );
         if (!language) return null;
-        return await actions.install(game.store, game.store_game_id, {
-          language,
-          storage,
-          title: game.title,
-        });
+        return await install({ language, storage });
       } finally {
         setWorking(false);
       }

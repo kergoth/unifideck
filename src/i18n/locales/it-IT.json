@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "Il client Ubisoft Connect non risponde",
       "ubisoftBootstrap": "Impossibile configurare il prefisso Ubisoft Connect",
       "ubisoftUmuMissing": "umu-run non trovato. Richiesto per i giochi Ubisoft",
-      "generic": "Installazione fallita. Controlla i log per dettagli"
+      "generic": "Installazione fallita. Controlla i log per dettagli",
+      "claimRequired": "Riscatta prima questo gioco dal suo bundle su itch.io"
     },
     "unknown": "Errore sconosciuto",
     "steamAppsUnavailable": "API SteamClient.Apps non disponibile"
@@ -636,6 +637,14 @@
     "label": "Lingua",
     "install": "Installa",
     "cancel": "Annulla"
+  },
+  "claimModal": {
+    "title": "Riscatta prima questo gioco",
+    "description": "{{title}} è nel tuo bundle itch.io \"{{bundle}}\", ma non è ancora nella tua libreria. Nella pagina che si apre, apri il bundle e premi Download accanto al gioco. Poi chiudi la finestra e l'installazione proseguirà.",
+    "descriptionNoBundle": "{{title}} è in un bundle itch.io che hai acquistato, ma non è ancora nella tua libreria. Nella pagina che si apre, apri il bundle e premi Download accanto al gioco. Poi chiudi la finestra e l'installazione proseguirà.",
+    "open": "Apri itch.io",
+    "openFailed": "Impossibile aprire la pagina di itch.io per riscattare il gioco",
+    "notClaimed": "Il gioco non è stato riscattato, quindi l'installazione non è partita"
   },
   "accountSwitch": {
     "title": "Rilevato cambio di account",

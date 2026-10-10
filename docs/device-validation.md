@@ -762,3 +762,18 @@ about 15 s after pressing ✕ next to Resume.
 | DV-Y2 | Play a Windows game under umu (GOG, Epic or itch.io), press ✕ | Nothing left on the game's prefix, wineserver included | (x) | Built plugin, real ✕, 2026-09-24: Madness Inside (itch.io) 18 to 0, nothing left on the prefix |
 | DV-Y3 | Play a Battle.net game, press ✕ once it is in game | The game closes, then the client; the launcher log shows `stopping 1 game process(es)` before `stopping N client process(es)`; within about 30 s nothing carries the appid | (x) | Built plugin, real ✕ in game, 2026-09-24: 33 processes, then 19 at 10 s and 0 at 20 s; log shows the game stopped, then 7 client processes. A ✕ during launch setup also left 0. Before the fix `Warcraft III.exe` was still running 40 s after the stop |
 
+## DV-Z: register 82, complete itch.io libraries
+
+Needs an itch.io account that owns at least one **bundle** with games not yet
+claimed (a cheap bundle is enough), and for DV-Z1 a large library (hundreds of
+owned keys; a tester's). Run against the **built** plugin. The claim page's
+layout was never seen when this was written: DV-Z3 is the first look.
+
+| ID | Step | Expected | Status | Evidence |
+|---|---|---|---|---|
+| DV-Z1 | Large library: Sync twice | First sync either lists the itch.io games or logs `library still loading after 90s` and keeps the shortcuts; a second sync follows by itself (`library_ready:itch` in `sync_activity.log`) and lists them. Neither sync logs `itch fetch exceeded 120s` | ( ) | |
+| DV-Z2 | Bundle account: Sync | Log line `N owned + M free collection + K unclaimed bundle`; unclaimed bundle games with a Linux/Windows build appear in the itch.io tab with artwork. A second sync is fast (butler keeps bundle games for 7 days) | ( ) | |
+| DV-Z3 | Gaming Mode: Install an unclaimed bundle game | The "Claim this game first" modal names the bundle; Open itch.io opens the shop window signed in on `my-purchases/bundles`. Note how the bundle page is reached and **the URL after pressing the game's Download button** (needed for a direct claim-page link) | ( ) | |
+| DV-Z4 | Claim it on the page, close the window | The storage picker follows and the install runs; the next sync shows the game as owned (no `claim_required`) | ( ) | |
+| DV-Z5 | Install another unclaimed game, close the window without claiming | Toast "The game was not claimed…"; nothing is queued; the game is still unclaimed on itch.io (no silent API claim) | ( ) | |
+| DV-Z6 | Desktop Mode: repeat DV-Z3/Z4 once | Same result | ( ) | |

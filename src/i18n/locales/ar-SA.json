@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "عميل Ubisoft Connect لا يستجيب",
       "ubisoftBootstrap": "تعذر تهيئة بيئة تشغيل Ubisoft Connect",
       "ubisoftUmuMissing": "أداة umu-run غير موجودة. مطلوبة لألعاب Ubisoft",
-      "generic": "فشل التثبيت. راجع السجلات للتفاصيل"
+      "generic": "فشل التثبيت. راجع السجلات للتفاصيل",
+      "claimRequired": "استلم هذه اللعبة أولًا من حزمتها على itch.io"
     },
     "unknown": "خطأ غير معروف",
     "steamAppsUnavailable": "واجهة برمجة تطبيقات SteamClient.Apps غير متوفرة"
@@ -636,6 +637,14 @@
     "label": "اللغة",
     "install": "تثبيت",
     "cancel": "إلغاء"
+  },
+  "claimModal": {
+    "title": "استلم هذه اللعبة أولًا",
+    "description": "{{title}} ضمن حزمة itch.io الخاصة بك \"{{bundle}}\" لكنها ليست في مكتبتك بعد. في الصفحة التي ستفتح، افتح الحزمة واضغط Download بجانب اللعبة. ثم أغلق النافذة وسيكتمل التثبيت.",
+    "descriptionNoBundle": "{{title}} ضمن حزمة itch.io اشتريتها لكنها ليست في مكتبتك بعد. في الصفحة التي ستفتح، افتح الحزمة واضغط Download بجانب اللعبة. ثم أغلق النافذة وسيكتمل التثبيت.",
+    "open": "فتح itch.io",
+    "openFailed": "تعذّر فتح صفحة الاستلام في itch.io",
+    "notClaimed": "لم تُستلم اللعبة، لذلك لم يبدأ التثبيت"
   },
   "accountSwitch": {
     "title": "تم رصد تغيير الحساب",

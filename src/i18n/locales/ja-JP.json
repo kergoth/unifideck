@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect が応答していません",
       "ubisoftBootstrap": "Ubisoft Connect プレフィックスを構成できませんでした",
       "ubisoftUmuMissing": "umu-run が見つかりません。Ubisoft のゲームの起動に必要です",
-      "generic": "インストールに失敗しました。詳細はログを確認してください"
+      "generic": "インストールに失敗しました。詳細はログを確認してください",
+      "claimRequired": "先に itch.io のバンドルからこのゲームを受け取ってください"
     },
     "unknown": "不明なエラー",
     "steamAppsUnavailable": "SteamClient.Apps API が利用できません"
@@ -636,6 +637,14 @@
     "label": "言語",
     "install": "インストール",
     "cancel": "キャンセル"
+  },
+  "claimModal": {
+    "title": "先にゲームを受け取ってください",
+    "description": "{{title}} は itch.io のバンドル「{{bundle}}」に含まれていますが、まだライブラリにありません。開いたページでバンドルを開き、ゲームの横にある Download を押してください。その後ウィンドウを閉じると、インストールが続行されます。",
+    "descriptionNoBundle": "{{title}} は購入した itch.io のバンドルに含まれていますが、まだライブラリにありません。開いたページでバンドルを開き、ゲームの横にある Download を押してください。その後ウィンドウを閉じると、インストールが続行されます。",
+    "open": "itch.io を開く",
+    "openFailed": "itch.io の受け取りページを開けませんでした",
+    "notClaimed": "ゲームが受け取られなかったため、インストールは開始されませんでした"
   },
   "accountSwitch": {
     "title": "アカウントの変更を検出しました",

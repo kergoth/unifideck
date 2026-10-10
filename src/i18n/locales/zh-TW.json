@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect 用戶端無回應",
       "ubisoftBootstrap": "無法設定 Ubisoft Connect 的 Wine Prefix",
       "ubisoftUmuMissing": "找不到執行 Ubisoft 遊戲所需的 umu-run",
-      "generic": "安裝失敗。請檢查紀錄檔"
+      "generic": "安裝失敗。請檢查紀錄檔",
+      "claimRequired": "請先在 itch.io 上從組合包領取此遊戲"
     },
     "unknown": "未知錯誤",
     "steamAppsUnavailable": "SteamClient.Apps API 不可用"
@@ -677,6 +678,14 @@
     "label": "語言",
     "install": "安裝",
     "cancel": "取消"
+  },
+  "claimModal": {
+    "title": "請先領取此遊戲",
+    "description": "{{title}} 在你的 itch.io 組合包「{{bundle}}」中，但尚未加入你的收藏庫。請在開啟的頁面中進入該組合包，按下遊戲旁的 Download。然後關閉視窗，安裝就會繼續。",
+    "descriptionNoBundle": "{{title}} 在你購買的一個 itch.io 組合包中，但尚未加入你的收藏庫。請在開啟的頁面中進入該組合包，按下遊戲旁的 Download。然後關閉視窗，安裝就會繼續。",
+    "open": "開啟 itch.io",
+    "openFailed": "無法開啟 itch.io 領取頁面",
+    "notClaimed": "遊戲未被領取，因此安裝沒有開始"
   },
   "accountSwitch": {
     "title": "已偵測的帳號切換",

@@ -127,6 +127,12 @@ class DownloadRPCMixin:
             store, game_id, storage_type, base_path, title, language,
         )
 
+        adapter = self.registry.get_store(store)
+        blocked = await adapter.install_precondition(game_id) if adapter else None
+        if blocked:
+            logger.info("[download] install_game %s/%s not queued: %s", store, game_id, blocked)
+            return {"success": False, "error": blocked}
+
         required_bytes = await self._resolve_required_bytes(store, game_id)
 
         download_svc = self._require_download()
@@ -141,6 +147,25 @@ class DownloadRPCMixin:
             download_dir=download_dir,
         )
         return {"success": result.success, "error": result.error}
+
+    async def begin_store_claim(self, store: str, game_id: str) -> Any:
+        """Arm the store's claim page for a game that must be claimed first.
+
+        The answer to ``install_game``'s ``itch_claim_required``: the
+        frontend calls this, opens the store's shop window (which lands on
+        the claim page), and calls :meth:`finish_store_claim` when it closes.
+        """
+        store, game_id = self._validate_pair(store, game_id)
+        info = await self._require_store(store).begin_claim(game_id)
+        if info is None:
+            return {"success": False, "error": "claim_page_unavailable"}
+        return {"success": True, **info}
+
+    async def finish_store_claim(self, store: str, game_id: str) -> Any:
+        """``{"success", "claimed"}`` once the claim window has closed."""
+        store, game_id = self._validate_pair(store, game_id)
+        claimed = await self._require_store(store).finish_claim(game_id)
+        return {"success": True, "claimed": bool(claimed)}
 
     async def _resolve_required_bytes(
         self, store: str, game_id: str,

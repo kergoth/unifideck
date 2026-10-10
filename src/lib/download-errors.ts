@@ -82,6 +82,10 @@ const CODE_KEYS: ReadonlyArray<readonly [RegExp, string]> = [
   // butler installs to <root>/<game-url-slug>; another store's game already
   // lives there, so the install was refused rather than mixed into it.
   [/^itch_folder_in_use$/, "errors.download.folderInUse"],
+  // itch.io: a bundle game not claimed yet. The install flow opens the claim
+  // page on this code (`services/store/claim-flow.tsx`); the key is what
+  // the user reads if it is reached any other way.
+  [/^itch_claim_required$/, "errors.download.claimRequired"],
 ];
 
 export function friendlyDownloadError(

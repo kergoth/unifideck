@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect client not responding",
       "ubisoftBootstrap": "Failed to set up Ubisoft Connect prefix",
       "ubisoftUmuMissing": "umu-run not found. Required for Ubisoft games",
-      "generic": "Installation failed. Check logs for details"
+      "generic": "Installation failed. Check logs for details",
+      "claimRequired": "Claim this game from its bundle on itch.io first"
     },
     "unknown": "Unknown error",
     "steamAppsUnavailable": "SteamClient.Apps API not available"
@@ -677,6 +678,14 @@
     "label": "Language",
     "install": "Install",
     "cancel": "Cancel"
+  },
+  "claimModal": {
+    "title": "Claim this game first",
+    "description": "{{title}} is in your itch.io bundle \"{{bundle}}\" but is not in your library yet. On the page that opens, open the bundle and press Download next to the game. Then close the window and the install continues.",
+    "descriptionNoBundle": "{{title}} is in an itch.io bundle you bought but is not in your library yet. On the page that opens, open the bundle and press Download next to the game. Then close the window and the install continues.",
+    "open": "Open itch.io",
+    "openFailed": "Could not open the itch.io claim page",
+    "notClaimed": "The game was not claimed, so the install did not start"
   },
   "accountSwitch": {
     "title": "Account Switch Detected",

@@ -67,6 +67,7 @@ Pure data island. No side-effects, no I/O. Safe to import from any layer.
 | ------------ | --------------------------------------------- |
 | `domain.py`  | `Game`, `StoreId`, `InstallState` dataclasses |
 | `events.py`  | All typed `EventBus` event payloads           |
+| `enums.py`   | `GameTag`, `StoreStatus`, `ErrorCode` and the other small enums |
 | `results.py` | `Result[T]` envelope (success/error/code)     |
 
 ### Layer 2 — `core/`

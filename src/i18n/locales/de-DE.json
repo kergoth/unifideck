@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect-Client antwortet nicht",
       "ubisoftBootstrap": "Ubisoft Connect-Präfix konnte nicht eingerichtet werden",
       "ubisoftUmuMissing": "umu-run nicht gefunden. Für Ubisoft-Spiele erforderlich",
-      "generic": "Installation fehlgeschlagen. Details siehe Protokolle"
+      "generic": "Installation fehlgeschlagen. Details siehe Protokolle",
+      "claimRequired": "Löse dieses Spiel zuerst aus seinem Bundle auf itch.io ein"
     },
     "unknown": "Unbekannter Fehler",
     "steamAppsUnavailable": "SteamClient.Apps API nicht verfügbar"
@@ -636,6 +637,14 @@
     "label": "Sprache",
     "install": "Installieren",
     "cancel": "Abbrechen"
+  },
+  "claimModal": {
+    "title": "Spiel zuerst einlösen",
+    "description": "{{title}} ist in deinem itch.io-Bundle „{{bundle}}“, aber noch nicht in deiner Bibliothek. Öffne auf der folgenden Seite das Bundle und drücke neben dem Spiel auf „Download“. Schließe dann das Fenster, und die Installation geht weiter.",
+    "descriptionNoBundle": "{{title}} ist in einem gekauften itch.io-Bundle, aber noch nicht in deiner Bibliothek. Öffne auf der folgenden Seite das Bundle und drücke neben dem Spiel auf „Download“. Schließe dann das Fenster, und die Installation geht weiter.",
+    "open": "itch.io öffnen",
+    "openFailed": "Die itch.io-Seite zum Einlösen konnte nicht geöffnet werden",
+    "notClaimed": "Das Spiel wurde nicht eingelöst, daher wurde die Installation nicht gestartet"
   },
   "accountSwitch": {
     "title": "Konto-Wechsel erkannt",

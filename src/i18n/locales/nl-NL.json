@@ -502,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect reageert niet",
       "ubisoftBootstrap": "Kan Ubisoft Connect-prefix niet configureren",
       "ubisoftUmuMissing": "umu-run niet gevonden. Vereist voor Ubisoft-games",
-      "generic": "Installatie mislukt. Zie logs voor details"
+      "generic": "Installatie mislukt. Zie logs voor details",
+      "claimRequired": "Claim deze game eerst uit de bundel op itch.io"
     },
     "unknown": "Onbekende fout",
     "steamAppsUnavailable": "API SteamClient.Apps niet beschikbaar"
@@ -636,6 +637,14 @@
     "label": "Taal",
     "install": "Installeren",
     "cancel": "Annuleren"
+  },
+  "claimModal": {
+    "title": "Claim deze game eerst",
+    "description": "{{title}} zit in je itch.io-bundel ‘{{bundle}}’, maar staat nog niet in je bibliotheek. Open op de pagina die verschijnt de bundel en druk op Download naast de game. Sluit daarna het venster en de installatie gaat verder.",
+    "descriptionNoBundle": "{{title}} zit in een itch.io-bundel die je hebt gekocht, maar staat nog niet in je bibliotheek. Open op de pagina die verschijnt de bundel en druk op Download naast de game. Sluit daarna het venster en de installatie gaat verder.",
+    "open": "itch.io openen",
+    "openFailed": "De itch.io-pagina om de game te claimen kon niet worden geopend",
+    "notClaimed": "De game is niet geclaimd, dus de installatie is niet gestart"
   },
   "accountSwitch": {
     "title": "Accountwijziging gedetecteerd",

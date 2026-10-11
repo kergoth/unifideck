@@ -9,7 +9,7 @@ import urllib.request
 from typing import TYPE_CHECKING, Any
 
 from unifideck.core.cross_store_ownership import GAME_PASS_KEY
-from unifideck.core.net import ssl_ctx_permissive as _ssl
+from unifideck.core.net import ssl_ctx_strict
 from unifideck.core.types import Game, GameTag
 from unifideck.utils.locale import get_unifideck_locale
 

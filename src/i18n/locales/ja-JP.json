@@ -34,7 +34,8 @@
       "noXboxProfile": "Xbox プロフィールなし",
       "childAccount": "子供用アカウント",
       "regionUnavailable": "地域が非対応",
-      "clientRejected": "Unifideck を更新"
+      "clientRejected": "Unifideck を更新",
+      "itchKeyLimited": "itch.io の API キーのどれもライブラリを読み取れません。API キーのページで「Generate new API key」を押してから、もう一度サインインしてください。"
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "インストールのための Ubisoft Connect の起動に失敗しました。",
     "ubisoftSignInExpired": "Ubisoft のサインインの有効期限が切れました",
     "ubisoftSignInExpiredMessage": "保存された Ubisoft のサインイン情報は受け付けられなくなりました。Unifideck の設定からサインアウトして、もう一度サインインしてください。",
+    "itchKeyRejected": "itch.io ライブラリを同期できません",
+    "itchKeyRejectedMessage": "itch.io が保存された API キーを拒否したため、itch.io のゲームを同期できません。Unifideck の設定で itch.io からサインアウトし、もう一度サインインしてください。既存のゲームは引き続き表示されます。",
     "multipartDetected": "マルチパートダウンロードを検出しました",
     "multipartMessage": "完了するまでお待ちください",
     "downloadFailed": "ダウンロード失敗",
@@ -499,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect が応答していません",
       "ubisoftBootstrap": "Ubisoft Connect プレフィックスを構成できませんでした",
       "ubisoftUmuMissing": "umu-run が見つかりません。Ubisoft のゲームの起動に必要です",
-      "generic": "インストールに失敗しました。詳細はログを確認してください"
+      "generic": "インストールに失敗しました。詳細はログを確認してください",
+      "claimRequired": "先に itch.io のバンドルからこのゲームを受け取ってください"
     },
     "unknown": "不明なエラー",
     "steamAppsUnavailable": "SteamClient.Apps API が利用できません"
@@ -634,6 +638,14 @@
     "install": "インストール",
     "cancel": "キャンセル"
   },
+  "claimModal": {
+    "title": "先にゲームを受け取ってください",
+    "description": "{{title}} は itch.io のバンドル「{{bundle}}」に含まれていますが、まだライブラリにありません。開いたページでバンドルを開き、ゲームの横にある Download を押してください。その後ウィンドウを閉じると、インストールが続行されます。",
+    "descriptionNoBundle": "{{title}} は購入した itch.io のバンドルに含まれていますが、まだライブラリにありません。開いたページでバンドルを開き、ゲームの横にある Download を押してください。その後ウィンドウを閉じると、インストールが続行されます。",
+    "open": "itch.io を開く",
+    "openFailed": "itch.io の受け取りページを開けませんでした",
+    "notClaimed": "ゲームが受け取られなかったため、インストールは開始されませんでした"
+  },
   "accountSwitch": {
     "title": "アカウントの変更を検出しました",
     "description": "別のSteamアカウントでログインしています。Unifideckのデータをどう処理しますか？",
@@ -716,6 +728,7 @@
     "signInRequired": "プレイするにはログインが必要です",
     "syncSkippedNoSubscription": "有効な Xbox Game Pass サブスクリプションが見つかりません。xCloud ライブラリは同期されませんでした。",
     "syncSkippedTierUnknown": "Xbox Game Pass サブスクリプションが検出されましたが、プランの確認ができませんでした。利用できないゲームが表示されるのを防ぐため、同期をスキップしました。",
+    "syncFreeTitlesOnly": "このアカウントには Xbox Game Pass がありません。Microsoft が無料でストリーミングするゲーム（Fortnite など）のみ同期されました。",
     "subscriptionCheckFailed": "Xbox Game Pass サブスクリプションを検証できませんでした。xCloud の同期をスキップしました。接続が安定したら再試行してください。"
   },
   "playButton": {
@@ -1079,6 +1092,7 @@
     "tagStreamable": "ストリーミング可",
     "messageOwned": "このゲームは次のストアで所有済みです:",
     "messageGamePass": "Xbox Game Pass",
+    "messageXboxCloud": "Xbox Cloud Gaming",
     "installed": "インストール済み",
     "platformPc": "PC",
     "platformConsole": "コンソール",

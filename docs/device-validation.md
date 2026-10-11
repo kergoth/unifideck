@@ -748,6 +748,7 @@ game and an HTML-only game. Run against the **built** plugin
 | DV-X7 | Uninstall both; `sudo systemctl restart plugin_loader` | Folders gone; after restart `pgrep -a butler` shows only the new daemon (none if itch.io is unused); `butler.db`, `-wal`, `-shm` are all mode 0600 | ( ) | |
 | DV-X8 | Play an HTML-only game (Gaming Mode) | Shortcut shows Play without an install; an Edge window opens on the game's page and comes to the foreground (`docs/gaming-mode-foreground.md`); closing it ends the session | ( ) | |
 | DV-X9 | Gaming Mode sign-in, then Disconnect, then restart Steam | Sign-in works through the auth shortcut; after Disconnect the itch.io tab disappears at once and stays gone after a restart (the store reads signed out). The shortcuts themselves are kept on purpose, as for every store: a sync never sweeps a store that did not answer. The user revokes the test key on itch.io | ( ) | 2026-09-24: Disconnect logged `logout success=True`, `check_store_status` reports itch `available: false` after a Steam restart. The tab stayed (ITCH.IO 23) on that build, which is what the tab-visibility fix addresses |
+| DV-X10 | An account whose API-keys page lists a **scoped** key first (one made by `butler login`), plus an unscoped one. Connect, then Sync. Then revoke the unscoped key and Sync again | Sign-in logs `key 1 of 2 cannot read the library` then `signed in as … with key 2 of 2`; the sync lists the games. After the revoke, one toast says itch.io refused the key and the shortcuts stay; signing in again with only the scoped key fails with the "Generate new API key" message, not a silent success | ( ) | Reported 2026-10-04 (DahliaRose): sign-in succeeded with a scoped key and every sync logged `403 api key does not permit profile:owned`, with nothing shown to the user |
 
 ## DV-Y: register 79 and 80, Stop (✕) ends the game
 
@@ -761,3 +762,18 @@ about 15 s after pressing ✕ next to Resume.
 | DV-Y2 | Play a Windows game under umu (GOG, Epic or itch.io), press ✕ | Nothing left on the game's prefix, wineserver included | (x) | Built plugin, real ✕, 2026-09-24: Madness Inside (itch.io) 18 to 0, nothing left on the prefix |
 | DV-Y3 | Play a Battle.net game, press ✕ once it is in game | The game closes, then the client; the launcher log shows `stopping 1 game process(es)` before `stopping N client process(es)`; within about 30 s nothing carries the appid | (x) | Built plugin, real ✕ in game, 2026-09-24: 33 processes, then 19 at 10 s and 0 at 20 s; log shows the game stopped, then 7 client processes. A ✕ during launch setup also left 0. Before the fix `Warcraft III.exe` was still running 40 s after the stop |
 
+## DV-Z: register 82, complete itch.io libraries
+
+Needs an itch.io account that owns at least one **bundle** with games not yet
+claimed (a cheap bundle is enough), and for DV-Z1 a large library (hundreds of
+owned keys; a tester's). Run against the **built** plugin. The claim page's
+layout was never seen when this was written: DV-Z3 is the first look.
+
+| ID | Step | Expected | Status | Evidence |
+|---|---|---|---|---|
+| DV-Z1 | Large library: Sync twice | First sync either lists the itch.io games or logs `library still loading after 90s` and keeps the shortcuts; a second sync follows by itself (`library_ready:itch` in `sync_activity.log`) and lists them. Neither sync logs `itch fetch exceeded 120s` | ( ) | |
+| DV-Z2 | Bundle account: Sync | Log line `N owned + M free collection + K unclaimed bundle`; unclaimed bundle games with a Linux/Windows build appear in the itch.io tab with artwork. A second sync is fast (butler keeps bundle games for 7 days) | ( ) | |
+| DV-Z3 | Gaming Mode: Install an unclaimed bundle game | The "Claim this game first" modal names the bundle; Open itch.io opens the shop window signed in on `my-purchases/bundles`. Note how the bundle page is reached and **the URL after pressing the game's Download button** (needed for a direct claim-page link) | ( ) | |
+| DV-Z4 | Claim it on the page, close the window | The storage picker follows and the install runs; the next sync shows the game as owned (no `claim_required`) | ( ) | |
+| DV-Z5 | Install another unclaimed game, close the window without claiming | Toast "The game was not claimed…"; nothing is queued; the game is still unclaimed on itch.io (no silent API claim) | ( ) | |
+| DV-Z6 | Desktop Mode: repeat DV-Z3/Z4 once | Same result | ( ) | |

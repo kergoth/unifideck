@@ -1,10 +1,8 @@
-"""core/types/events.py — Event names and status enums.
+"""core/types/events.py — the ``Events`` enum (bus event names).
 
-The enums are intentionally kept together in one module because
-they're conceptually related (string-typed taxonomies) and none of
-them pulls in any runtime dependency — pure value types. A future
-split into one-enum-per-file would add import noise without
-improving cohesion.
+The smaller status and taxonomy enums (``StoreStatus``, ``GameTag``,
+``ErrorCode``, ...) live in ``enums.py``, split out for the 550-LOC
+volumetry cap. Import them from ``unifideck.core.types``.
 
 Every enum inherits from `str` so members serialize directly to
 JSON without a custom encoder: `json.dumps(Events.SYNC_COMPLETE)`
@@ -16,6 +14,10 @@ Reference: Technical Document v1.0 — Section 3.3 (EventBus topology).
 from __future__ import annotations
 
 import sys
+
+# ``StrEnum`` is exported for ``enums.py``, so the pre-3.11 shim below has
+# one home.
+__all__ = ["Events", "StrEnum"]
 
 # UP036/UP042: ruff reads requires-python (3.11) and concludes this block
 # is dead and the shim redundant. It is neither. The interpreter that
@@ -104,6 +106,14 @@ class Events(StrEnum):
     # facets on this so newly-backfilled scores surface in Steam's
     # native Sort-by-Metacritic without a manual resync/restart.
     METADATA_BACKFILL_COMPLETE = "metadata_backfill_complete"
+
+    # A store's library read outlived the sync that started it (the sync
+    # kept the store's shortcuts and moved on) and has now finished.
+    # SyncService answers with another sync, which picks up the finished
+    # read. Emitted by the itch.io store, whose first read of a large
+    # library can take minutes (stores/itch/library.py).
+    # Payload fields: store (str)
+    STORE_LIBRARY_READY = "store_library_ready"
 
     # Durable activity-log events — captured by ActivityLogService
     # into a JSONL file (``runtime_dir/sync_activity.log``) so the
@@ -450,96 +460,3 @@ class Events(StrEnum):
     CLOUD_SYNC_DOWN_FAILED = "cloud_sync_down_failed"
     CLOUD_SYNC_UP_COMPLETE = "cloud_sync_up_complete"
     CLOUD_SYNC_UP_FAILED = "cloud_sync_up_failed"
-
-
-class StoreStatus(StrEnum):
-    """Store availability after a status check."""
-
-    UNAVAILABLE = "unavailable"
-    NOT_AUTHENTICATED = "not_authenticated"
-    AVAILABLE = "available"
-    ERROR = "error"
-
-
-class StoreEnum(StrEnum):
-    """Canonical store IDs used as dict keys and frontend routes."""
-
-    EPIC = "epic"
-    GOG = "gog"
-    AMAZON = "amazon"
-    MICROSOFT = "microsoft"
-    UBISOFT = "ubisoft"
-    BATTLENET = "battlenet"
-
-
-class OwnershipType(StrEnum):
-    """How a game is owned (full purchase vs subscription)."""
-
-    OWNED = "owned"
-    SUBSCRIBED = "subscribed"
-    TRIAL = "trial"
-    UNKNOWN = "unknown"
-
-
-class GameTag(StrEnum):
-    """Filters applied by the UI to group/hide games."""
-
-    NATIVE = "native"
-    PROTON = "proton"
-    CLOUD = "cloud"
-    XCLOUD = "xcloud"
-    # Played in an Edge window at ``metadata["browser_url"]``, never
-    # installed: xCloud streams and itch.io HTML5 games. The launcher and
-    # the Play section both key on it (``launcher/browser_games``).
-    BROWSER = "browser"
-    DLC = "dlc"
-    BETA = "beta"
-    DEMO = "demo"
-    HIDDEN = "hidden"
-
-
-class ErrorCode(StrEnum):
-    """Normalized error codes across stores.
-
-    Store connectors convert their raw errors (HTTP status,
-    subprocess exit code, API string) into one of these values so
-    the frontend can match on stable identifiers instead of
-    parsing free-form messages.
-    """
-
-    NOT_AUTHENTICATED = "not_authenticated"
-    TOKEN_EXPIRED = "token_expired"  # noqa: S105 — event name constant, not a credential
-    NETWORK_ERROR = "network_error"
-    NOT_FOUND = "not_found"
-    PERMISSION_DENIED = "permission_denied"
-    QUOTA_EXCEEDED = "quota_exceeded"
-    INSUFFICIENT_SPACE = "insufficient_space"
-    BINARY_MISSING = "binary_missing"
-    TIMEOUT = "timeout"
-    UNKNOWN = "unknown"
-
-
-class SubscriptionTier(StrEnum):
-    """Subscription tier for stores whose catalog depends on a paid plan.
-
-    Sprint 18e scope is Microsoft / Xbox Game Pass. The three paid
-    tiers (Essential, Premium, Ultimate) are listed for forward
-    compatibility — the current implementation can only discriminate
-    NONE vs. any-active until real probe responses from each tier
-    are captured and parsed (Sprint 18f).
-
-    ACTIVE_UNKNOWN is the conservative bucket for "the probe responded
-    200 OK but couldn't parse a tier marker". Callers treat it as
-    "skip the sync" (Sprint 18e Q1 decision) to avoid showing users
-    games they can't actually stream.
-
-    The enum inherits from str so members serialize directly to JSON
-    for EventBus payloads: json.dumps(SubscriptionTier.ULTIMATE)
-    produces "ultimate", which is what the frontend expects.
-    """
-
-    NONE = "none"
-    ESSENTIAL = "essential"
-    PREMIUM = "premium"
-    ULTIMATE = "ultimate"
-    ACTIVE_UNKNOWN = "active_unknown"

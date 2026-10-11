@@ -34,7 +34,8 @@
       "noXboxProfile": "Geen Xbox-profiel",
       "childAccount": "Kinderaccount",
       "regionUnavailable": "Regio uitgesloten",
-      "clientRejected": "Werk Unifideck bij"
+      "clientRejected": "Werk Unifideck bij",
+      "itchKeyLimited": "Geen van je itch.io-API-sleutels kan je bibliotheek lezen. Druk op de API-sleutelpagina op ‘Generate new API key’ en meld je opnieuw aan."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "Kan Ubisoft Connect niet openen voor installatie.",
     "ubisoftSignInExpired": "Ubisoft-aanmelding verlopen",
     "ubisoftSignInExpiredMessage": "Je opgeslagen Ubisoft-aanmelding wordt niet meer geaccepteerd. Meld je af en weer aan via de Unifideck-instellingen om opnieuw verbinding te maken.",
+    "itchKeyRejected": "itch.io-bibliotheek kan niet synchroniseren",
+    "itchKeyRejectedMessage": "itch.io weigert je opgeslagen API-sleutel, dus je itch.io-games kunnen niet synchroniseren. Meld je af bij itch.io in de Unifideck-instellingen en meld je opnieuw aan. Je bestaande games blijven zichtbaar.",
     "multipartDetected": "Meerdelige download gedetecteerd",
     "multipartMessage": "Wees geduldig en wacht tot de download is voltooid",
     "downloadFailed": "Download mislukt",
@@ -499,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect reageert niet",
       "ubisoftBootstrap": "Kan Ubisoft Connect-prefix niet configureren",
       "ubisoftUmuMissing": "umu-run niet gevonden. Vereist voor Ubisoft-games",
-      "generic": "Installatie mislukt. Zie logs voor details"
+      "generic": "Installatie mislukt. Zie logs voor details",
+      "claimRequired": "Claim deze game eerst uit de bundel op itch.io"
     },
     "unknown": "Onbekende fout",
     "steamAppsUnavailable": "API SteamClient.Apps niet beschikbaar"
@@ -634,6 +638,14 @@
     "install": "Installeren",
     "cancel": "Annuleren"
   },
+  "claimModal": {
+    "title": "Claim deze game eerst",
+    "description": "{{title}} zit in je itch.io-bundel ‘{{bundle}}’, maar staat nog niet in je bibliotheek. Open op de pagina die verschijnt de bundel en druk op Download naast de game. Sluit daarna het venster en de installatie gaat verder.",
+    "descriptionNoBundle": "{{title}} zit in een itch.io-bundel die je hebt gekocht, maar staat nog niet in je bibliotheek. Open op de pagina die verschijnt de bundel en druk op Download naast de game. Sluit daarna het venster en de installatie gaat verder.",
+    "open": "itch.io openen",
+    "openFailed": "De itch.io-pagina om de game te claimen kon niet worden geopend",
+    "notClaimed": "De game is niet geclaimd, dus de installatie is niet gestart"
+  },
   "accountSwitch": {
     "title": "Accountwijziging gedetecteerd",
     "description": "Er is aangemeld met een ander Steam-account. Wat wil je doen met je Unifideck-gegevens?",
@@ -716,6 +728,7 @@
     "signInRequired": "Meld je aan om te spelen",
     "syncSkippedNoSubscription": "Geen actief Xbox Game Pass-abonnement gedetecteerd. Je xCloud-bibliotheek is niet gesynchroniseerd.",
     "syncSkippedTierUnknown": "Xbox Game Pass-abonnement gedetecteerd, maar het niveau kon niet worden bepaald. Synchronisatie overgeslagen om te voorkomen dat niet-beschikbare games worden getoond.",
+    "syncFreeTitlesOnly": "Geen Xbox Game Pass op dit account. Alleen de games die Microsoft gratis streamt (zoals Fortnite) zijn gesynchroniseerd.",
     "subscriptionCheckFailed": "Kan Xbox Game Pass-abonnement niet verifiëren. xCloud-synchronisatie overgeslagen. Probeer het opnieuw zodra je verbinding stabiel is."
   },
   "playButton": {
@@ -1079,6 +1092,7 @@
     "tagStreamable": "Streambaar",
     "messageOwned": "Je hebt deze game al op:",
     "messageGamePass": "Xbox Game Pass",
+    "messageXboxCloud": "Xbox Cloud Gaming",
     "installed": "Geïnstalleerd",
     "platformPc": "PC",
     "platformConsole": "Console",

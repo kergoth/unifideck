@@ -104,6 +104,24 @@ async function prepareWebSession(store: StoreId): Promise<void> {
   }
 }
 
+/**
+ * Open `store`'s browser shop window, and nothing more.
+ *
+ * For the claim flow (`claim-flow.tsx`): the backend has already pointed
+ * the window at the claim page, and the flow checks the claim itself when
+ * the window closes, so the full post-close sync {@link openStorefront}
+ * runs would only repeat that work.
+ */
+export async function openStorefrontWindow(
+  store: StoreId,
+): Promise<ShortcutLaunchResult> {
+  const launch = BROWSER_STOREFRONTS[store];
+  if (!launch) {
+    return { success: false, error: `No browser storefront for ${store}` };
+  }
+  return launch();
+}
+
 /** Whether this store has a shop the cart can open at all. */
 export function hasStorefront(store: StoreId): boolean {
   return store in BROWSER_STOREFRONTS || store in CLIENT_STOREFRONTS;

@@ -34,7 +34,8 @@
       "noXboxProfile": "Kein Xbox-Profil",
       "childAccount": "Kinderkonto",
       "regionUnavailable": "Region gesperrt",
-      "clientRejected": "Bitte aktualisieren"
+      "clientRejected": "Bitte aktualisieren",
+      "itchKeyLimited": "Keiner deiner itch.io-API-Schlüssel kann deine Bibliothek lesen. Tippe auf der API-Schlüssel-Seite auf „Generate new API key“ und melde dich erneut an."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "Ubisoft Connect konnte für die Installation nicht geöffnet werden.",
     "ubisoftSignInExpired": "Ubisoft-Anmeldung abgelaufen",
     "ubisoftSignInExpiredMessage": "Deine gespeicherte Ubisoft-Anmeldung wird nicht mehr akzeptiert. Melde dich in den Unifideck-Einstellungen ab und wieder an, um die Verbindung wiederherzustellen.",
+    "itchKeyRejected": "itch.io-Bibliothek kann nicht synchronisiert werden",
+    "itchKeyRejectedMessage": "itch.io lehnt deinen gespeicherten API-Schlüssel ab, daher können deine itch.io-Spiele nicht synchronisiert werden. Melde dich in den Unifideck-Einstellungen bei itch.io ab und wieder an. Deine vorhandenen Spiele bleiben sichtbar.",
     "multipartDetected": "Mehrteiliger Download erkannt",
     "multipartMessage": "Bitte hab Geduld und warte auf den Abschluss",
     "downloadFailed": "Download fehlgeschlagen",
@@ -499,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect-Client antwortet nicht",
       "ubisoftBootstrap": "Ubisoft Connect-Präfix konnte nicht eingerichtet werden",
       "ubisoftUmuMissing": "umu-run nicht gefunden. Für Ubisoft-Spiele erforderlich",
-      "generic": "Installation fehlgeschlagen. Details siehe Protokolle"
+      "generic": "Installation fehlgeschlagen. Details siehe Protokolle",
+      "claimRequired": "Löse dieses Spiel zuerst aus seinem Bundle auf itch.io ein"
     },
     "unknown": "Unbekannter Fehler",
     "steamAppsUnavailable": "SteamClient.Apps API nicht verfügbar"
@@ -634,6 +638,14 @@
     "install": "Installieren",
     "cancel": "Abbrechen"
   },
+  "claimModal": {
+    "title": "Spiel zuerst einlösen",
+    "description": "{{title}} ist in deinem itch.io-Bundle „{{bundle}}“, aber noch nicht in deiner Bibliothek. Öffne auf der folgenden Seite das Bundle und drücke neben dem Spiel auf „Download“. Schließe dann das Fenster, und die Installation geht weiter.",
+    "descriptionNoBundle": "{{title}} ist in einem gekauften itch.io-Bundle, aber noch nicht in deiner Bibliothek. Öffne auf der folgenden Seite das Bundle und drücke neben dem Spiel auf „Download“. Schließe dann das Fenster, und die Installation geht weiter.",
+    "open": "itch.io öffnen",
+    "openFailed": "Die itch.io-Seite zum Einlösen konnte nicht geöffnet werden",
+    "notClaimed": "Das Spiel wurde nicht eingelöst, daher wurde die Installation nicht gestartet"
+  },
   "accountSwitch": {
     "title": "Konto-Wechsel erkannt",
     "description": "Ein anderes Steam-Konto ist jetzt angemeldet. Was möchten Sie mit Ihren Unifideck-Daten tun?",
@@ -716,6 +728,7 @@
     "signInRequired": "Zum Spielen anmelden",
     "syncSkippedNoSubscription": "Kein aktives Xbox Game Pass-Abonnement erkannt. Ihre xCloud-Bibliothek wurde nicht synchronisiert.",
     "syncSkippedTierUnknown": "Ihr Xbox Game Pass-Abonnement wurde erkannt, aber der Tarif konnte nicht ermittelt werden. Synchronisierung übersprungen, um nicht verfügbare Spiele nicht aufzulisten.",
+    "syncFreeTitlesOnly": "Kein Xbox Game Pass für dieses Konto. Nur die Spiele, die Microsoft kostenlos streamt (z. B. Fortnite), wurden synchronisiert.",
     "subscriptionCheckFailed": "Ihr Xbox Game Pass-Abonnement konnte nicht verifiziert werden. xCloud-Synchronisierung übersprungen. Versuchen Sie es erneut, wenn sich Ihre Verbindung stabilisiert hat."
   },
   "playButton": {
@@ -1079,6 +1092,7 @@
     "tagStreamable": "Streambar",
     "messageOwned": "Sie besitzen dieses Spiel bereits bei:",
     "messageGamePass": "Xbox Game Pass",
+    "messageXboxCloud": "Xbox Cloud Gaming",
     "installed": "Installiert",
     "platformPc": "PC",
     "platformConsole": "Konsole",

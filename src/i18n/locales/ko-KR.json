@@ -34,7 +34,8 @@
       "noXboxProfile": "Xbox 프로필 없음",
       "childAccount": "자녀 계정",
       "regionUnavailable": "지원되지 않는 지역",
-      "clientRejected": "Unifideck 업데이트"
+      "clientRejected": "Unifideck 업데이트",
+      "itchKeyLimited": "itch.io API 키 중 어느 것도 라이브러리를 읽을 수 없습니다. API 키 페이지에서 \"Generate new API key\"를 누른 뒤 다시 로그인하세요."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "설치를 위한 Ubisoft Connect 실행에 실패했습니다.",
     "ubisoftSignInExpired": "Ubisoft 로그인이 만료되었습니다",
     "ubisoftSignInExpiredMessage": "저장된 Ubisoft 로그인 정보가 더 이상 사용되지 않습니다. Unifideck 설정에서 로그아웃한 뒤 다시 로그인하여 연결하세요.",
+    "itchKeyRejected": "itch.io 라이브러리를 동기화할 수 없습니다",
+    "itchKeyRejectedMessage": "itch.io가 저장된 API 키를 거부하여 itch.io 게임을 동기화할 수 없습니다. Unifideck 설정에서 itch.io 로그아웃 후 다시 로그인하세요. 기존 게임은 계속 표시됩니다.",
     "multipartDetected": "분할 다운로드 감지됨",
     "multipartMessage": "완료될 때까지 잠시 기다려 주세요",
     "downloadFailed": "다운로드 실패",
@@ -499,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect 클라이언트가 응답하지 않습니다",
       "ubisoftBootstrap": "Ubisoft Connect 실행 환경(Prefix)을 설정하지 못했습니다",
       "ubisoftUmuMissing": "umu-run 파일을 찾을 수 없음. Ubisoft 게임 작동 필요",
-      "generic": "설치 실패. 세부 정보는 로그를 참조하세요"
+      "generic": "설치 실패. 세부 정보는 로그를 참조하세요",
+      "claimRequired": "먼저 itch.io의 번들에서 이 게임을 받으세요"
     },
     "unknown": "알 수 없는 오류",
     "steamAppsUnavailable": "SteamClient.Apps API를 사용할 수 없습니다"
@@ -634,6 +638,14 @@
     "install": "설치",
     "cancel": "취소"
   },
+  "claimModal": {
+    "title": "먼저 게임을 받으세요",
+    "description": "{{title}}은(는) itch.io 번들 \"{{bundle}}\"에 포함되어 있지만 아직 라이브러리에 없습니다. 열리는 페이지에서 번들을 열고 게임 옆의 Download를 누르세요. 그런 다음 창을 닫으면 설치가 계속됩니다.",
+    "descriptionNoBundle": "{{title}}은(는) 구매한 itch.io 번들에 포함되어 있지만 아직 라이브러리에 없습니다. 열리는 페이지에서 번들을 열고 게임 옆의 Download를 누르세요. 그런 다음 창을 닫으면 설치가 계속됩니다.",
+    "open": "itch.io 열기",
+    "openFailed": "itch.io 받기 페이지를 열 수 없습니다",
+    "notClaimed": "게임을 받지 않아 설치가 시작되지 않았습니다"
+  },
   "accountSwitch": {
     "title": "계정 변경 감지됨",
     "description": "다른 Steam 계정으로 로그인했습니다. Unifideck 데이터를 어떻게 처리하시겠습니까?",
@@ -716,6 +728,7 @@
     "signInRequired": "플레이하려면 로그인 필요",
     "syncSkippedNoSubscription": "유효한 Xbox Game Pass 멤버십을 찾을 수 없습니다. xCloud 라이브러리 동기화가 취소되었습니다.",
     "syncSkippedTierUnknown": "Xbox Game Pass 구독은 확인되었으나 요금제 정보를 가져올 수 없습니다. 이용할 수 없는 게임이 표시되지 않도록 동기화를 건너뛰었습니다.",
+    "syncFreeTitlesOnly": "이 계정에는 Xbox Game Pass가 없습니다. Microsoft가 무료로 스트리밍하는 게임(예: Fortnite)만 동기화되었습니다.",
     "subscriptionCheckFailed": "Xbox Game Pass 멤버십을 확인할 수 없습니다. xCloud 동기화를 건너뛰었습니다. 연결이 원활할 때 다시 시도해 주세요."
   },
   "playButton": {
@@ -1079,6 +1092,7 @@
     "tagStreamable": "스트리밍 가능",
     "messageOwned": "이미 다음 스토어에서 이 게임을 보유하고 있습니다:",
     "messageGamePass": "Xbox Game Pass",
+    "messageXboxCloud": "Xbox Cloud Gaming",
     "installed": "설치됨",
     "platformPc": "PC",
     "platformConsole": "콘솔",

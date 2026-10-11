@@ -34,7 +34,8 @@
       "noXboxProfile": "无 Xbox 个人资料",
       "childAccount": "儿童帐户",
       "regionUnavailable": "地区不受支持",
-      "clientRejected": "请更新 Unifideck"
+      "clientRejected": "请更新 Unifideck",
+      "itchKeyLimited": "您的 itch.io API 密钥都无法读取游戏库。请在 API 密钥页面点击“Generate new API key”，然后重新登录。"
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "无法打开 Ubisoft Connect 以进行安装。",
     "ubisoftSignInExpired": "Ubisoft 登录已过期",
     "ubisoftSignInExpiredMessage": "已保存的 Ubisoft 登录信息不再有效。请在 Unifideck 设置中退出并重新登录以恢复连接。",
+    "itchKeyRejected": "无法同步 itch.io 游戏库",
+    "itchKeyRejectedMessage": "itch.io 拒绝了已保存的 API 密钥，因此无法同步您的 itch.io 游戏。请在 Unifideck 设置中退出 itch.io 并重新登录。您现有的游戏仍会显示。",
     "multipartDetected": "检测到多部分下载",
     "multipartMessage": "请耐心等待完成",
     "downloadFailed": "下载失败",
@@ -499,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect 客户端无响应",
       "ubisoftBootstrap": "无法配置 Ubisoft Connect 运行环境",
       "ubisoftUmuMissing": "未找到 umu-run。运行 Ubisoft 游戏所必需",
-      "generic": "安装失败。请查看日志了解详细信息"
+      "generic": "安装失败。请查看日志了解详细信息",
+      "claimRequired": "请先在 itch.io 上从合集中领取此游戏"
     },
     "unknown": "未知错误",
     "steamAppsUnavailable": "SteamClient.Apps API 不可用"
@@ -634,6 +638,14 @@
     "install": "安装",
     "cancel": "取消"
   },
+  "claimModal": {
+    "title": "请先领取此游戏",
+    "description": "{{title}} 在你的 itch.io 合集“{{bundle}}”中，但尚未加入你的库。请在打开的页面中进入该合集，点击游戏旁边的 Download。然后关闭窗口，安装将继续。",
+    "descriptionNoBundle": "{{title}} 在你购买的一个 itch.io 合集中，但尚未加入你的库。请在打开的页面中进入该合集，点击游戏旁边的 Download。然后关闭窗口，安装将继续。",
+    "open": "打开 itch.io",
+    "openFailed": "无法打开 itch.io 领取页面",
+    "notClaimed": "游戏未被领取，因此安装没有开始"
+  },
   "accountSwitch": {
     "title": "检测到账号变更",
     "description": "您已登录不同的 Steam 账号。您希望如何处理 Unifideck 的数据？",
@@ -716,6 +728,7 @@
     "signInRequired": "需要登录以进行游玩",
     "syncSkippedNoSubscription": "未检测到有效的 Xbox Game Pass 会员资格。xCloud 游戏库同步已被跳过。",
     "syncSkippedTierUnknown": "检测到 Xbox Game Pass 订阅，但未能确认会员级别。为了避免显示无法运行的游戏，已跳过同步。",
+    "syncFreeTitlesOnly": "此账户没有 Xbox Game Pass。仅同步了 Microsoft 免费串流的游戏（例如 Fortnite）。",
     "subscriptionCheckFailed": "无法验证 Xbox Game Pass 订阅状态。已跳过 xCloud 同步。请在网络连接稳定时重试。"
   },
   "playButton": {
@@ -1079,6 +1092,7 @@
     "tagStreamable": "可串流",
     "messageOwned": "您已在以下商店拥有此游戏：",
     "messageGamePass": "Xbox Game Pass",
+    "messageXboxCloud": "Xbox Cloud Gaming",
     "installed": "已安装",
     "platformPc": "PC",
     "platformConsole": "主机",

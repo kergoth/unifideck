@@ -34,7 +34,8 @@
       "noXboxProfile": "لا يوجد ملف Xbox",
       "childAccount": "حساب طفل",
       "regionUnavailable": "المنطقة غير مدعومة",
-      "clientRejected": "حدّث Unifideck"
+      "clientRejected": "حدّث Unifideck",
+      "itchKeyLimited": "لا يستطيع أي من مفاتيح API الخاصة بك على itch.io قراءة مكتبتك. في صفحة مفاتيح API، اضغط على \"Generate new API key\" ثم سجّل الدخول مرة أخرى."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "فشل تشغيل Ubisoft Connect للتثبيت.",
     "ubisoftSignInExpired": "انتهت صلاحية تسجيل الدخول إلى Ubisoft",
     "ubisoftSignInExpiredMessage": "لم يعد تسجيل الدخول المحفوظ إلى Ubisoft مقبولاً. سجّل الخروج ثم الدخول مرة أخرى من إعدادات Unifideck لإعادة الاتصال.",
+    "itchKeyRejected": "تعذّرت مزامنة مكتبة itch.io",
+    "itchKeyRejectedMessage": "رفض itch.io مفتاح API المحفوظ، لذا لا يمكن مزامنة ألعاب itch.io. سجّل الخروج من itch.io في إعدادات Unifideck ثم سجّل الدخول مرة أخرى. ستبقى ألعابك الحالية ظاهرة.",
     "multipartDetected": "تم اكتشاف تنزيل متعدد الأجزاء",
     "multipartMessage": "يرجى الانتظار لحين اكتمال العملية",
     "downloadFailed": "فشل التنزيل",
@@ -499,7 +502,8 @@
       "ubisoftClientNotRunning": "عميل Ubisoft Connect لا يستجيب",
       "ubisoftBootstrap": "تعذر تهيئة بيئة تشغيل Ubisoft Connect",
       "ubisoftUmuMissing": "أداة umu-run غير موجودة. مطلوبة لألعاب Ubisoft",
-      "generic": "فشل التثبيت. راجع السجلات للتفاصيل"
+      "generic": "فشل التثبيت. راجع السجلات للتفاصيل",
+      "claimRequired": "استلم هذه اللعبة أولًا من حزمتها على itch.io"
     },
     "unknown": "خطأ غير معروف",
     "steamAppsUnavailable": "واجهة برمجة تطبيقات SteamClient.Apps غير متوفرة"
@@ -634,6 +638,14 @@
     "install": "تثبيت",
     "cancel": "إلغاء"
   },
+  "claimModal": {
+    "title": "استلم هذه اللعبة أولًا",
+    "description": "{{title}} ضمن حزمة itch.io الخاصة بك \"{{bundle}}\" لكنها ليست في مكتبتك بعد. في الصفحة التي ستفتح، افتح الحزمة واضغط Download بجانب اللعبة. ثم أغلق النافذة وسيكتمل التثبيت.",
+    "descriptionNoBundle": "{{title}} ضمن حزمة itch.io اشتريتها لكنها ليست في مكتبتك بعد. في الصفحة التي ستفتح، افتح الحزمة واضغط Download بجانب اللعبة. ثم أغلق النافذة وسيكتمل التثبيت.",
+    "open": "فتح itch.io",
+    "openFailed": "تعذّر فتح صفحة الاستلام في itch.io",
+    "notClaimed": "لم تُستلم اللعبة، لذلك لم يبدأ التثبيت"
+  },
   "accountSwitch": {
     "title": "تم رصد تغيير الحساب",
     "description": "لقد قمت بتسجيل الدخول بحساب Steam مختلف. كيف ترغب في التعامل مع بيانات Unifideck؟",
@@ -716,6 +728,7 @@
     "signInRequired": "تسجيل الدخول مطلوب للعب",
     "syncSkippedNoSubscription": "لم يتم رصد اشتراك Xbox Game Pass نشط. تم تخطي مزامنة ألعاب xCloud.",
     "syncSkippedTierUnknown": "تم رصد اشتراك Xbox Game Pass ولكن تعذر تأكيد الفئة. لتفادي إظهار الألعاب غير القابلة للتشغيل، تم تخطي المزامنة.",
+    "syncFreeTitlesOnly": "لا يوجد اشتراك Xbox Game Pass في هذا الحساب. تمت مزامنة الألعاب التي تبثها Microsoft مجانًا فقط (مثل Fortnite).",
     "subscriptionCheckFailed": "تعذر التحقق من حالة اشتراك Xbox Game Pass. تم تخطي مزامنة xCloud. يرجى المحاولة عند توفر اتصال شبكة مستقر."
   },
   "playButton": {
@@ -1079,6 +1092,7 @@
     "tagStreamable": "قابل للبث",
     "messageOwned": "أنت تملك هذه اللعبة بالفعل على:",
     "messageGamePass": "Xbox Game Pass",
+    "messageXboxCloud": "Xbox Cloud Gaming",
     "installed": "مثبتة",
     "platformPc": "PC",
     "platformConsole": "جهاز الألعاب",

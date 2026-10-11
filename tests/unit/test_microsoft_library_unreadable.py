@@ -87,8 +87,9 @@ class _Session:
 
 
 class _Catalog:
-    def __init__(self, result: Any) -> None:
+    def __init__(self, result: Any, *, has_subscription: bool | None = None) -> None:
         self.result = result
+        self.has_subscription = has_subscription
 
     async def fetch_games(self, session: Any) -> Any:
         if isinstance(self.result, Exception):

@@ -354,10 +354,22 @@ class MicrosoftStore(BrowserAuthRebuildMixin, StoreBase):
             )
             return None
         try:
-            return await self._catalog.fetch_games(session)
+            games = await self._catalog.fetch_games(session)
         except Exception:
             logger.exception("[MicrosoftStore] get_library failed")
             return None
+        if games is not None and self._catalog.has_subscription is False:
+            # The Game Pass part of the library is what was skipped: say so,
+            # or a lapsed subscriber sees their shortcuts vanish unexplained.
+            logger.info(
+                "[MicrosoftStore] no Game Pass plan on this account — "
+                "synced %d title(s) it can stream for free", len(games),
+            )
+            await self._bus.emit(
+                Events.SYNC_SKIPPED, store="microsoft",
+                reason="free_titles_only",
+            )
+        return games
 
     # ── Install lifecycle: refused, not faked ────────────────────────────
     #

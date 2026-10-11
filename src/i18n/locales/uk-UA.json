@@ -34,7 +34,8 @@
       "noXboxProfile": "Немає профілю Xbox",
       "childAccount": "Дитячий акаунт",
       "regionUnavailable": "Регіон недоступний",
-      "clientRejected": "Оновіть Unifideck"
+      "clientRejected": "Оновіть Unifideck",
+      "itchKeyLimited": "Жоден із ваших API-ключів itch.io не може прочитати бібліотеку. На сторінці API-ключів натисніть «Generate new API key», потім увійдіть знову."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "Не вдалося запустити Ubisoft Connect для встановлення.",
     "ubisoftSignInExpired": "Термін входу в Ubisoft минув",
     "ubisoftSignInExpiredMessage": "Збережені дані входу в Ubisoft більше не приймаються. Вийдіть і увійдіть знову в налаштуваннях Unifideck, щоб відновити з'єднання.",
+    "itchKeyRejected": "Не вдається синхронізувати бібліотеку itch.io",
+    "itchKeyRejectedMessage": "itch.io відхилив збережений API-ключ, тому ігри itch.io не синхронізуються. Вийдіть з itch.io в налаштуваннях Unifideck і увійдіть знову. Поточний список ігор залишиться без змін.",
     "multipartDetected": "Виявлено багатокомпонентне завантаження",
     "multipartMessage": "Будь ласка, зачекайте завершення процесу",
     "downloadFailed": "Завантаження не вдалося",
@@ -499,7 +502,8 @@
       "ubisoftClientNotRunning": "Клієнт Ubisoft Connect не відповідає",
       "ubisoftBootstrap": "Не вдалося налаштувати префікс Ubisoft Connect",
       "ubisoftUmuMissing": "Не знайдено інструмент umu-run. Необхідний для ігор Ubisoft",
-      "generic": "Встановлення завершилося помилкою. Подробиці див. у логах"
+      "generic": "Встановлення завершилося помилкою. Подробиці див. у логах",
+      "claimRequired": "Спочатку отримайте цю гру з її набору на itch.io"
     },
     "unknown": "Невідома помилка",
     "steamAppsUnavailable": "API SteamClient.Apps недоступне"
@@ -634,6 +638,14 @@
     "install": "Встановити",
     "cancel": "Скасувати"
   },
+  "claimModal": {
+    "title": "Спочатку отримайте гру",
+    "description": "{{title}} входить у ваш набір itch.io «{{bundle}}», але ще не додана до бібліотеки. На сторінці, що відкриється, відкрийте набір і натисніть Download поруч із грою. Потім закрийте вікно, і встановлення продовжиться.",
+    "descriptionNoBundle": "{{title}} входить у придбаний вами набір itch.io, але ще не додана до бібліотеки. На сторінці, що відкриється, відкрийте набір і натисніть Download поруч із грою. Потім закрийте вікно, і встановлення продовжиться.",
+    "open": "Відкрити itch.io",
+    "openFailed": "Не вдалося відкрити сторінку itch.io для отримання гри",
+    "notClaimed": "Гру не отримано, тому встановлення не почалося"
+  },
   "accountSwitch": {
     "title": "Виявлено зміну акаунта",
     "description": "Ви увійшли під іншим акаунтом Steam. Що ви хочете зробити з даними Unifideck?",
@@ -716,6 +728,7 @@
     "signInRequired": "Увійдіть, щоб грати",
     "syncSkippedNoSubscription": "Активну підписку Xbox Game Pass не знайдено. Вашу бібліотеку xCloud не синхронізовано.",
     "syncSkippedTierUnknown": "Підписку Xbox Game Pass виявлено, але рівень визначити не вдалося. Синхронізацію пропущено, щоб уникнути показу недоступних ігор.",
+    "syncFreeTitlesOnly": "У цьому обліковому записі немає Xbox Game Pass. Синхронізовано лише ігри, які Microsoft транслює безкоштовно (наприклад, Fortnite).",
     "subscriptionCheckFailed": "Не вдалося перевірити підписку Xbox Game Pass. Синхронізацію xCloud пропущено. Спробуйте ще раз, коли підключення стане стабільним."
   },
   "playButton": {
@@ -1079,6 +1092,7 @@
     "tagStreamable": "Стримінг",
     "messageOwned": "Ця гра у вас уже є в:",
     "messageGamePass": "Xbox Game Pass",
+    "messageXboxCloud": "Xbox Cloud Gaming",
     "installed": "Встановлено",
     "platformPc": "PC",
     "platformConsole": "Консоль",

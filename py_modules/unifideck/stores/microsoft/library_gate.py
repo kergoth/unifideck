@@ -93,6 +93,12 @@ async def check_subscription_gate(
             reason="subscription_tier_unknown",
         )
         return GateVerdict.UNREADABLE
+    if answer.tier == SubscriptionTier.FREE:
+        logger.info(
+            "[MicrosoftStore] no Game Pass (free xCloud session) — "
+            "fetching the titles Microsoft streams for free",
+        )
+        return GateVerdict.PROCEED
     logger.info(
         "[MicrosoftStore] active subscription detected (tier=%s) — "
         "fetching catalog", answer.tier.value,

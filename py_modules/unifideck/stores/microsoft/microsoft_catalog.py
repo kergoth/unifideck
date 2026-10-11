@@ -8,10 +8,12 @@ import urllib.error
 import urllib.request
 from typing import TYPE_CHECKING, Any
 
-from unifideck.core.net import ssl_ctx_strict
+from unifideck.core.cross_store_ownership import GAME_PASS_KEY
+from unifideck.core.net import ssl_ctx_permissive as _ssl
 from unifideck.core.types import Game, GameTag
 from unifideck.utils.locale import get_unifideck_locale
 
+from .game_pass import fetch_game_pass_ids, membership
 from .microsoft_config import MicrosoftConfig
 
 if TYPE_CHECKING:
@@ -64,6 +66,8 @@ class MicrosoftCatalogReader:
         """Initialize the instance."""
         self._config = config
         self._config_manager = config_manager
+        self.has_subscription: bool | None = None
+        """What the last ``fetch_games`` saw (see ``_account_has_subscription``)."""
 
     async def fetch_games(
         self,
@@ -76,6 +80,7 @@ class MicrosoftCatalogReader:
         shortcut). ``[]`` only when ``/v2/titles`` answered and none of its
         titles are entitled.
         """
+        self.has_subscription = None
         if not session.gs_token or not session.regions:
             logger.warning(
                 "[MicrosoftCatalog] session has no gs_token/regions",
@@ -106,6 +111,7 @@ class MicrosoftCatalogReader:
         entitled = _entitled_titles(titles, base_uri)
         if entitled is None:
             return None
+        self.has_subscription = _account_has_subscription(entitled)
 
         product_ids = _unique_product_ids(entitled)
         if not product_ids:
@@ -114,28 +120,31 @@ class MicrosoftCatalogReader:
                 "productIds — keeping the existing xCloud shortcuts",
             )
             return None
-        t1 = time.time()
-        title_map = await self._batch_resolve_titles(
-            product_ids, market,
-        )
+        title_map, game_pass = await _describe_entitled(product_ids, market)
         logger.info(
-            "[MicrosoftCatalog] resolved %d/%d titles in %.1fs "
-            "(total fetch_games: %.1fs)",
-            len(title_map), len(product_ids),
-            time.time() - t1, time.time() - t0,
+            "[MicrosoftCatalog] total fetch_games: %.1fs", time.time() - t0,
         )
-        return self._build_xcloud_games(entitled, title_map)
+        return self._build_xcloud_games(entitled, title_map, game_pass)
 
     @staticmethod
     def _build_xcloud_games(
         entitled: list[dict[str, Any]], title_map: dict[str, Any],
+        game_pass: dict[str, bool] | None = None,
     ) -> list[Game]:
-        """Build xCloud ``Game`` records from entitled titles + names."""
+        """Build xCloud ``Game`` records from entitled titles + names.
+
+        *game_pass* (UPPER-case product id → in the catalog) is recorded as
+        ``metadata[GAME_PASS_KEY]``; ``None`` leaves the key out, which reads
+        as "unknown", never as "not in Game Pass".
+        """
         games: list[Game] = []
         for t in entitled:
             pid = (t.get("details") or {}).get("productId") or ""
             if not pid:
                 continue
+            metadata: dict[str, Any] = {BROWSER_URL_KEY: XCLOUD_PLAY_URL.format(game_id=pid)}
+            if game_pass is not None:
+                metadata[GAME_PASS_KEY] = game_pass.get(pid.upper(), False)
             games.append(Game(
                 app_id=0,
                 store="microsoft",
@@ -143,7 +152,7 @@ class MicrosoftCatalogReader:
                 title=_title_for(title_map, pid, t.get("titleId", "")),
                 installed=False,
                 tags=[GameTag.XCLOUD, GameTag.BROWSER],
-                metadata={BROWSER_URL_KEY: XCLOUD_PLAY_URL.format(game_id=pid)},
+                metadata=metadata,
             ))
         return games
 
@@ -164,15 +173,24 @@ class MicrosoftCatalogReader:
         )
         return result or []
 
-    async def _batch_resolve_titles(
-        self, product_ids: list[str], market: str,
-    ) -> dict[str, str]:
-        """Resolve productIds → display titles via displaycatalog MP."""
-        products = await fetch_products(product_ids, market)
-        return {
-            pid: title for pid, raw in products.items()
-            if (title := product_title(raw))
-        }
+
+
+async def _describe_entitled(
+    product_ids: list[str], market: str,
+) -> tuple[dict[str, str], dict[str, bool] | None]:
+    """Display titles, and Game Pass membership (None when unknown), for the
+    entitled products. One displaycatalog pass serves both."""
+    t0 = time.time()
+    products, listed = await asyncio.gather(
+        fetch_products(product_ids, market), fetch_game_pass_ids(market),
+    )
+    title_map = titles_by_product(products)
+    logger.info(
+        "[MicrosoftCatalog] resolved %d/%d titles in %.1fs",
+        len(title_map), len(product_ids), time.time() - t0,
+    )
+    game_pass = None if listed is None else membership(product_ids, products, listed)
+    return title_map, game_pass
 
 
 def _pick_region_base_uri(
@@ -227,6 +245,22 @@ def _entitled_titles(
         )
         return None
     return entitled
+
+def _account_has_subscription(entitled: list[dict[str, Any]]) -> bool | None:
+    """Whether the account streams through a Game Pass plan.
+
+    The login token cannot tell: a free account's ``xgpuweb`` login also
+    carries ``offeringid`` XGPUWEB. Each ``/v2/titles`` row can, in
+    ``details.userSubscriptions``: the user's own plans, ``[]`` for a free
+    account (measured 2026-10-05; that account was entitled to Fortnite
+    only). ``None`` when a row lacks the list, so a changed response shape
+    never reads as "no Game Pass".
+    """
+    plans = [(t.get("details") or {}).get("userSubscriptions") for t in entitled]
+    if not plans or not all(isinstance(p, list) for p in plans):
+        return None
+    return any(plans)
+
 
 def _unique_product_ids(entitled: list[dict[str, Any]]) -> list[str]:
     """Extract unique productIds preserving first-seen order."""
@@ -344,6 +378,11 @@ async def fetch_products(
                 # lookup case-folds (see ``_title_for``).
                 out[pid.upper()] = raw
     return out
+
+
+def titles_by_product(products: dict[str, dict[str, Any]]) -> dict[str, str]:
+    """Display title per UPPER-case productId, for products that have one."""
+    return {pid: title for pid, raw in products.items() if (title := product_title(raw))}
 
 
 def product_title(raw: dict[str, Any]) -> str:

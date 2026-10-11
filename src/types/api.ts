@@ -293,4 +293,7 @@ export type GameTag =
   | "xcloud"
   // Played in an Edge window at `browser_url`, never installed: xCloud
   // streams and itch.io HTML5 games (backend `launcher/browser_games`).
-  | "browser";
+  | "browser"
+  // Paid for but not yet claimed on the store's site (an itch.io bundle
+  // game). The install flow opens the claim page first.
+  | "claim_required";

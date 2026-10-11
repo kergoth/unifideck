@@ -40,6 +40,10 @@ from .uploads import choose_upload
 logger = logging.getLogger(__name__)
 
 
+#: An unclaimed bundle game: the itch.io claim page must open first.
+CLAIM_REQUIRED = "itch_claim_required: claim this game from its bundle on itch.io first"
+
+
 def _fail(game_id: str, error: str) -> InstallResult:
     logger.warning("[itch] install %s failed: %s", game_id, error)
     return InstallResult(success=False, game_id=game_id, store=STORE, error=error)
@@ -118,6 +122,24 @@ class ItchInstaller:
         self._default_root = default_install_root
         self._stall_s = stall_s
 
+    async def claim_needed(self, game_id: str, profile: int | None = None) -> bool:
+        """True for a bundle game the user has not claimed yet.
+
+        The user decided the claim is theirs to make, on the itch.io page
+        (``bundles.py``). butler's install calls would claim a bundle game
+        through the API on their own (``ClaimBundleGame``), so an
+        unclaimed one never reaches them. Any butlerd failure answers
+        False: the install then reports its own, more specific error.
+        """
+        try:
+            profile = profile if profile is not None else await self._library.profile_id()
+            if profile is None:
+                return False
+            return await self._library.ownership_source(profile, game_id) == "bundle"
+        except (ButlerdError, OSError, TimeoutError, ValueError) as e:
+            logger.info("[itch] ownership check for %s failed: %s", game_id, e)
+            return False
+
     async def install(
         self, game_id: str, base_path: str | None,
         progress_cb: ProgressCallback | None,
@@ -127,6 +149,8 @@ class ItchInstaller:
             profile = await self._library.profile_id()
             if profile is None:
                 return _fail(game_id, "itch_not_signed_in: itch.io login required")
+            if await self.claim_needed(game_id, profile):
+                return _fail(game_id, CLAIM_REQUIRED)
             game = await self._library.owned_game(game_id)
             if game is None:
                 return _fail(game_id, "itch_game_not_found")

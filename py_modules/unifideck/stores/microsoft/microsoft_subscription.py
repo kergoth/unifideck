@@ -365,7 +365,7 @@ def _match_tier_string(raw: str) -> SubscriptionTier | None:
     low = raw.lower()
     if "ultimate" in low or low == "xgpu" or low.startswith("xgpuweb"):
         if "f2p" in low:
-            return SubscriptionTier.NONE
+            return SubscriptionTier.FREE
         return SubscriptionTier.ULTIMATE
     if "premium" in low:
         return SubscriptionTier.PREMIUM

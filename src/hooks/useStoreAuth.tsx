@@ -55,8 +55,9 @@ const SIGN_IN_HINT_KEYS: Partial<Record<StoreId, string>> = {
 
 /**
  * Backend sign-in failures that have a sentence of their own (the Microsoft
- * device-code flow, `MicrosoftDeviceAuth`). Anything else shows its raw code
- * under the generic "sign-in failed" title, as before.
+ * device-code flow, `MicrosoftDeviceAuth`, and itch.io's "no key on the page
+ * can read the library", `stores/itch/auth.py`). Anything else shows its raw
+ * code under the generic "sign-in failed" title, as before.
  */
 const ERROR_KEYS: Record<string, string> = {
   device_code_expired: "auth.errors.codeExpired",
@@ -65,6 +66,7 @@ const ERROR_KEYS: Record<string, string> = {
   child_account: "auth.errors.childAccount",
   region_unavailable: "auth.errors.regionUnavailable",
   client_rejected: "auth.errors.clientRejected",
+  itch_key_limited: "auth.errors.itchKeyLimited",
 };
 
 /** The user pressed Cancel; telling them it failed would be noise. */

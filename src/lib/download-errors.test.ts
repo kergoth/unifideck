@@ -114,6 +114,12 @@ describe("friendlyDownloadError — bare backend codes", () => {
     // is on the bare code `stalled` (audit register item 28).
     ["stalled: no output for 120s while downloading", "errors.download.stalled"],
     ["stalled: no output for 600s while finalizing", "errors.download.stalled"],
+    // An unclaimed itch.io bundle game. The install flow opens the claim
+    // page on this code; the sentence is for any other path that meets it.
+    [
+      "itch_claim_required: claim this game from its bundle on itch.io first",
+      "errors.download.claimRequired",
+    ],
   ])("maps %s", (raw, key) => {
     expect(friendlyDownloadError(raw, t)).toBe(key);
   });

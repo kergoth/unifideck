@@ -34,7 +34,8 @@
       "noXboxProfile": "無 Xbox 個人檔案",
       "childAccount": "兒童帳戶",
       "regionUnavailable": "地區不支援",
-      "clientRejected": "請更新 Unifideck"
+      "clientRejected": "請更新 Unifideck",
+      "itchKeyLimited": "您的 itch.io API 金鑰都無法讀取遊戲庫。請在 API 金鑰頁面點選「Generate new API key」，然後重新登入。"
     }
   },
   "storage": {
@@ -274,6 +275,8 @@
     "ubisoftLauncherOpenFailedMessage": "無法開啟 Ubisoft Connect 進行安裝。",
     "ubisoftSignInExpired": "Ubisoft 登入已過期",
     "ubisoftSignInExpiredMessage": "已儲存的 Ubisoft 登入資訊不再有效。請在 Unifideck 設定中登出並重新登入以恢復連線。",
+    "itchKeyRejected": "無法同步 itch.io 遊戲庫",
+    "itchKeyRejectedMessage": "itch.io 拒絕了已儲存的 API 金鑰，因此無法同步您的 itch.io 遊戲。請在 Unifideck 設定中登出 itch.io 並重新登入。您現有的遊戲仍會顯示。",
     "multipartDetected": "已偵測到分段下載",
     "multipartMessage": "請耐心等待完成",
     "downloadFailed": "下載失敗",
@@ -499,7 +502,8 @@
       "ubisoftClientNotRunning": "Ubisoft Connect 用戶端無回應",
       "ubisoftBootstrap": "無法設定 Ubisoft Connect 的 Wine Prefix",
       "ubisoftUmuMissing": "找不到執行 Ubisoft 遊戲所需的 umu-run",
-      "generic": "安裝失敗。請檢查紀錄檔"
+      "generic": "安裝失敗。請檢查紀錄檔",
+      "claimRequired": "請先在 itch.io 上從組合包領取此遊戲"
     },
     "unknown": "未知錯誤",
     "steamAppsUnavailable": "SteamClient.Apps API 不可用"
@@ -658,6 +662,7 @@
     "tagStreamable": "可串流",
     "messageOwned": "您已在以下商店擁有此遊戲：",
     "messageGamePass": "Xbox Game Pass",
+    "messageXboxCloud": "Xbox Cloud Gaming",
     "installed": "已安裝",
     "platformPc": "PC",
     "platformConsole": "主機",
@@ -673,6 +678,14 @@
     "label": "語言",
     "install": "安裝",
     "cancel": "取消"
+  },
+  "claimModal": {
+    "title": "請先領取此遊戲",
+    "description": "{{title}} 在你的 itch.io 組合包「{{bundle}}」中，但尚未加入你的收藏庫。請在開啟的頁面中進入該組合包，按下遊戲旁的 Download。然後關閉視窗，安裝就會繼續。",
+    "descriptionNoBundle": "{{title}} 在你購買的一個 itch.io 組合包中，但尚未加入你的收藏庫。請在開啟的頁面中進入該組合包，按下遊戲旁的 Download。然後關閉視窗，安裝就會繼續。",
+    "open": "開啟 itch.io",
+    "openFailed": "無法開啟 itch.io 領取頁面",
+    "notClaimed": "遊戲未被領取，因此安裝沒有開始"
   },
   "accountSwitch": {
     "title": "已偵測的帳號切換",
@@ -756,6 +769,7 @@
     "signInRequired": "需要登入以進行遊玩",
     "syncSkippedNoSubscription": "未偵測到有效的 Xbox Game Pass 會員資格。xCloud 遊戲庫同步已被跳過。",
     "syncSkippedTierUnknown": "偵測到 Xbox Game Pass 訂閱，但無法確認會員等級。為避免顯示無法遊玩的遊戲，已略過同步。",
+    "syncFreeTitlesOnly": "此帳戶沒有 Xbox Game Pass。僅同步了 Microsoft 免費串流的遊戲（例如 Fortnite）。",
     "subscriptionCheckFailed": "無法驗證 Xbox Game Pass 訂閱狀態。已跳過 xCloud 同步。請在網路連線穩定時重試。"
   },
   "playButton": {

@@ -34,7 +34,8 @@
       "noXboxProfile": "Nessun profilo Xbox",
       "childAccount": "Account bambino",
       "regionUnavailable": "Regione esclusa",
-      "clientRejected": "Aggiorna Unifideck"
+      "clientRejected": "Aggiorna Unifideck",
+      "itchKeyLimited": "Nessuna delle tue chiavi API di itch.io può leggere la libreria. Nella pagina delle chiavi API, premi «Generate new API key», poi accedi di nuovo."
     }
   },
   "storage": {
@@ -265,6 +266,8 @@
     "ubisoftLauncherOpenFailedMessage": "Apertura di Ubisoft Connect fallita per l'installazione.",
     "ubisoftSignInExpired": "Accesso a Ubisoft scaduto",
     "ubisoftSignInExpiredMessage": "L'accesso a Ubisoft salvato non è più valido. Esci e accedi di nuovo dalle impostazioni di Unifideck per riconnetterti.",
+    "itchKeyRejected": "Impossibile sincronizzare la libreria itch.io",
+    "itchKeyRejectedMessage": "itch.io ha rifiutato la chiave API salvata, quindi i tuoi giochi itch.io non possono essere sincronizzati. Esci da itch.io nelle impostazioni di Unifideck e accedi di nuovo. I giochi esistenti restano visibili.",
     "multipartDetected": "Rilevato download multi-parte",
     "multipartMessage": "Si prega di pazientare e attendere il completamento",
     "downloadFailed": "Download fallito",
@@ -499,7 +502,8 @@
       "ubisoftClientNotRunning": "Il client Ubisoft Connect non risponde",
       "ubisoftBootstrap": "Impossibile configurare il prefisso Ubisoft Connect",
       "ubisoftUmuMissing": "umu-run non trovato. Richiesto per i giochi Ubisoft",
-      "generic": "Installazione fallita. Controlla i log per dettagli"
+      "generic": "Installazione fallita. Controlla i log per dettagli",
+      "claimRequired": "Riscatta prima questo gioco dal suo bundle su itch.io"
     },
     "unknown": "Errore sconosciuto",
     "steamAppsUnavailable": "API SteamClient.Apps non disponibile"
@@ -634,6 +638,14 @@
     "install": "Installa",
     "cancel": "Annulla"
   },
+  "claimModal": {
+    "title": "Riscatta prima questo gioco",
+    "description": "{{title}} è nel tuo bundle itch.io \"{{bundle}}\", ma non è ancora nella tua libreria. Nella pagina che si apre, apri il bundle e premi Download accanto al gioco. Poi chiudi la finestra e l'installazione proseguirà.",
+    "descriptionNoBundle": "{{title}} è in un bundle itch.io che hai acquistato, ma non è ancora nella tua libreria. Nella pagina che si apre, apri il bundle e premi Download accanto al gioco. Poi chiudi la finestra e l'installazione proseguirà.",
+    "open": "Apri itch.io",
+    "openFailed": "Impossibile aprire la pagina di itch.io per riscattare il gioco",
+    "notClaimed": "Il gioco non è stato riscattato, quindi l'installazione non è partita"
+  },
   "accountSwitch": {
     "title": "Rilevato cambio di account",
     "description": "È stato effettuato l'accesso con un account Steam diverso. Cosa vorresti fare con i tuoi dati Unifideck?",
@@ -716,6 +728,7 @@
     "signInRequired": "Accedi per giocare",
     "syncSkippedNoSubscription": "Nessun abbonamento Xbox Game Pass attivo rilevato. La tua libreria xCloud non è stata sincronizzata.",
     "syncSkippedTierUnknown": "L'abbonamento Xbox Game Pass è stato rilevato ma non è stato possibile determinare il piano. Sincronizzazione saltata per evitare di elencare giochi non disponibili.",
+    "syncFreeTitlesOnly": "Nessun Xbox Game Pass su questo account. Sono stati sincronizzati solo i giochi che Microsoft trasmette gratuitamente (come Fortnite).",
     "subscriptionCheckFailed": "Impossibile verificare l'abbonamento Xbox Game Pass. Sincronizzazione xCloud saltata. Riprova quando la connessione si stabilizza."
   },
   "playButton": {
@@ -1079,6 +1092,7 @@
     "tagStreamable": "In streaming",
     "messageOwned": "Possiedi già questo gioco su:",
     "messageGamePass": "Xbox Game Pass",
+    "messageXboxCloud": "Xbox Cloud Gaming",
     "installed": "Installato",
     "platformPc": "PC",
     "platformConsole": "Console",

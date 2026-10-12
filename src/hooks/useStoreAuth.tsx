@@ -27,6 +27,7 @@ import { AuthDispatcher } from "../services/auth/AuthDispatcher";
 import { ChromiumInstallModal } from "../components/modals/ChromiumInstallModal";
 import { STORE_VISUALS } from "../types/store";
 import { connectGameVault } from "../lib/gamevault-connect";
+import { connectRomM } from "../lib/romm-connect";
 import type { AuthResult, StoreId } from "../types/api";
 
 /**
@@ -119,8 +120,11 @@ export function useStoreAuth(store: StoreId): UseStoreAuthResult {
     // cannot report success differently. That is not free: the sync kick was
     // missing here for exactly that reason, and a freshly connected GameVault
     // showed nothing until the user pressed Sync themselves.
-    if (store === "gamevault") {
-      const result = await connectGameVault({ setBusy });
+    if (store === "gamevault" || store === "romm") {
+      const result =
+        store === "gamevault"
+          ? await connectGameVault({ setBusy })
+          : await connectRomM({ setBusy });
       if (result === null) return null;
       if (result.success) {
         auth.notifyConnected(store);

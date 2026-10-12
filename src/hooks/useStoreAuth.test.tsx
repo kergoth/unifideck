@@ -31,23 +31,36 @@ vi.mock("../api/rpc-routes", () => ({
   rpcRoutes: { requestAuthSync: "request_auth_sync" },
 }));
 
+const mockConnectRomM = vi.hoisted(() => vi.fn());
+vi.mock("../lib/romm-connect", () => ({ connectRomM: mockConnectRomM }));
+
 const mockConnectGameVault = vi.hoisted(() => vi.fn());
 vi.mock("../lib/gamevault-connect", () => ({
   connectGameVault: mockConnectGameVault,
 }));
 
 const notifyConnected = vi.hoisted(() => vi.fn());
+const mockLogout = vi.hoisted(() => vi.fn());
 vi.mock("../contexts/AuthContext", () => ({
-  useAuth: () => ({ statuses: {}, notifyConnected, notifyDisconnected: vi.fn() }),
+  useAuth: () => ({
+    statuses: {},
+    notifyConnected,
+    notifyDisconnected: vi.fn(),
+    logout: mockLogout,
+  }),
 }));
 
 vi.mock("../contexts/StoreContext", () => ({
-  useStores: () => ({ stores: [{ name: "gamevault" }] }),
+  useStores: () => ({ stores: [{ name: "gamevault" }, { name: "romm" }] }),
 }));
 
-vi.mock("./useToast", () => ({
-  useToast: () => ({ success: vi.fn(), error: vi.fn(), info: vi.fn() }),
+const toast = vi.hoisted(() => ({
+  success: vi.fn(),
+  error: vi.fn(),
+  info: vi.fn(),
+  show: vi.fn(),
 }));
+vi.mock("./useToast", () => ({ useToast: () => toast }));
 
 vi.mock("react-i18next", () => ({
   useTranslation: () => ({ t: (key: string) => key }),
@@ -136,5 +149,52 @@ describe("useStoreAuth — GameVault post-connect sync", () => {
     expect(notifyConnected).toHaveBeenCalledWith("gamevault");
     expect(errorSpy).toHaveBeenCalled();
     errorSpy.mockRestore();
+  });
+});
+
+describe("useStoreAuth — RomM", () => {
+  beforeEach(() => {
+    mockCall.mockClear();
+    mockPrepareForSync.mockClear();
+    notifyConnected.mockClear();
+    toast.show.mockClear();
+    toast.error.mockClear();
+    mockCall.mockImplementation(() => Promise.resolve(undefined));
+  });
+
+  it("shares the GameVault post-connect handling: prepare, then sync", async () => {
+    mockConnectRomM.mockResolvedValue({ success: true });
+
+    const { connect } = useStoreAuth("romm");
+    await connect();
+    await flush();
+
+    expect(notifyConnected).toHaveBeenCalledWith("romm");
+    expect(mockPrepareForSync).toHaveBeenCalledTimes(1);
+    expect(mockCall).toHaveBeenCalledWith("request_auth_sync", "romm");
+    expect(mockPrepareForSync.mock.invocationCallOrder[0]).toBeLessThan(
+      mockCall.mock.invocationCallOrder[0],
+    );
+  });
+
+  it("stays silent and does not notify when the modal was dismissed", async () => {
+    mockConnectRomM.mockResolvedValue(null);
+
+    const { connect } = useStoreAuth("romm");
+    expect(await connect()).toBeNull();
+    await flush();
+
+    expect(notifyConnected).not.toHaveBeenCalled();
+    expect(mockCall).not.toHaveBeenCalled();
+    expect(toast.error).not.toHaveBeenCalled();
+  });
+
+  it("shows no warning for an ordinary logout", async () => {
+    mockLogout.mockResolvedValue({ success: true, metadata: {} });
+
+    const { disconnect } = useStoreAuth("romm");
+    await disconnect();
+
+    expect(toast.show).not.toHaveBeenCalled();
   });
 });

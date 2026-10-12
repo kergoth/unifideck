@@ -478,9 +478,10 @@ class MetadataService(_SteamMetadataMixin):
                 cached = self._cache.get(CACHE_NAMESPACE, cache_key)
                 if isinstance(cached, dict):
                     if cached.get("_negative"):
-                        return {}
+                        return self._with_catalog_release_date(game, {})
                     if cached:
-                        return await self._served_from_cache(game, cached, cache_key)
+                        served = await self._served_from_cache(game, cached, cache_key)
+                        return self._with_catalog_release_date(game, served)
             except Exception as e:
                 logger.debug("[MetadataService] Cache read failed for %s: %s", cache_key, e)
 
@@ -511,5 +512,19 @@ class MetadataService(_SteamMetadataMixin):
         except Exception as e:
             logger.warning("[MetadataService] Failed to cache metadata for %s: %s", cache_key, e)
 
-        return merged
+        return self._with_catalog_release_date(game, merged)
+
+    @staticmethod
+    def _with_catalog_release_date(game: Game, enriched: dict[str, Any]) -> dict[str, Any]:
+        """Fill ``release_date`` from the store's own catalog when no source had one.
+
+        Applied after the cache so that a negative or older entry cannot hide
+        a date the catalog supplies; it is never written back to the cache.
+        """
+        if enriched.get("release_date"):
+            return enriched
+        own = (getattr(game, "metadata", None) or {}).get("release_date")
+        if isinstance(own, str) and own:
+            return {**enriched, "release_date": own}
+        return enriched
 

@@ -137,6 +137,7 @@ A connector sub-package for each store (the set is `bootstrap/cache_registry._ST
 | `stores/battlenet/` | Battle.net              | Battle.net client in a Wine prefix   |
 | `stores/microsoft/` | Xbox Cloud Gaming + owned Xbox purchases | xbox.com device-code sign-in in the Edge window; Collections for ownership (`ownership/`) |
 | `stores/gamevault/` | GameVault (self-hosted) | The user's own server over HTTP, or a local folder of archives |
+| `stores/romm/`      | RomM (self-hosted)      | The user's own server over HTTP; Linux and Windows platforms only, downloaded as one ZIP per game |
 | `stores/itch/`      | itch.io                 | `bin/butler/butler`, run as the butlerd JSON-RPC daemon |
 
 ### Layer 5 — `services/`

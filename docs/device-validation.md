@@ -761,3 +761,23 @@ about 15 s after pressing ✕ next to Resume.
 | DV-Y2 | Play a Windows game under umu (GOG, Epic or itch.io), press ✕ | Nothing left on the game's prefix, wineserver included | (x) | Built plugin, real ✕, 2026-09-24: Madness Inside (itch.io) 18 to 0, nothing left on the prefix |
 | DV-Y3 | Play a Battle.net game, press ✕ once it is in game | The game closes, then the client; the launcher log shows `stopping 1 game process(es)` before `stopping N client process(es)`; within about 30 s nothing carries the appid | (x) | Built plugin, real ✕ in game, 2026-09-24: 33 processes, then 19 at 10 s and 0 at 20 s; log shows the game stopped, then 7 client processes. A ✕ during launch setup also left 0. Before the fix `Warcraft III.exe` was still running 40 s after the stop |
 
+## DV-ROMM: the RomM store
+
+These checks need a RomM server and a Steam Deck running the **built** plugin.
+API probes established pairing and token behavior, but do not verify the
+Deck UI. Every row below remains unrun.
+
+| ID | Step | Expected | Status | Evidence |
+|---|---|---|---|---|
+| DV-ROMM1 | Pair by scanning the QR code on a phone, approve in RomM, then disconnect | QR opens the same server with the code filled in; automatic sync starts only after approval and final variant choice; config is mode 0600 without password or device code; disconnect clears local config only | ( ) | |
+| DV-ROMM2 | Connect with a pasted token (scopes `roms.read`, `platforms.read`), then disconnect | Works; the token is still valid afterwards | ( ) | |
+| DV-ROMM3 | Deny a pairing, let another expire, then retry; disconnect while offline | Denial/expiry stays inline; retry gets a new code in the same modal; offline disconnect clears local state without a revocation warning | ( ) | |
+| DV-ROMM4 | Dismiss during pairing, after the platform step, and while approval is slow to return | No local connection or sync; a late approved token may remain in RomM and must be removed there | ( ) | |
+| DV-ROMM5 | Select platforms with a controller; sync | Defaults are all selected; a one-platform server shows no checkboxes; only Linux and Windows games appear | ( ) | |
+| DV-ROMM6 | Install a game from an uploaded ZIP and one from a server directory | Both install with the same layout, complete files | ( ) | |
+| DV-ROMM7 | Launch a native game and a Windows game | Native launches directly; Windows launches through the Proton path | ( ) | |
+| DV-ROMM8 | Install to an SD card; cancel one install mid-download | Installs; cancel removes only the staging and partial output | ( ) | |
+| DV-ROMM9 | Open a GameVault game installed before this change | It still launches, its executable override survives, and uninstall works | ( ) | |
+| DV-ROMM10 | Look at covers before and after install; a game with no Steam match | Covers show; the RomM release date appears. Record whether the cover URL needed authentication | ( ) | |
+| DV-ROMM11 | Capture Logs after connecting | The bundle holds no RomM token or password | ( ) | |
+| DV-ROMM12 | Read the form in a non-English language | Labels fit and read correctly; translations are machine-drafted and need a native-speaker review | ( ) | |

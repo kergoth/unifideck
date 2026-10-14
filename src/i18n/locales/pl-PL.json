@@ -1083,7 +1083,8 @@
     "title": "POZYCJE GIER",
     "enabled": "Kolekcje włączone",
     "disabled": "Kolekcje wyłączone",
-    "groupDuplicates": "Grupuj duplikaty"
+    "groupDuplicates": "Grupuj duplikaty",
+    "tabMasterHint": "TabMaster ukrywa karty biblioteki Unifideck. Włącz kolekcje, aby tworzyć w TabMaster karty dla poszczególnych sklepów."
   },
   "storeOwnership": {
     "settingsTitle": "SKLEP STEAM",

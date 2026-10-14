@@ -1083,7 +1083,8 @@
     "title": "라이브러리 게임 항목",
     "enabled": "컬렉션 활성화됨",
     "disabled": "컬렉션 비활성화됨",
-    "groupDuplicates": "중복 항목 그룹화"
+    "groupDuplicates": "중복 항목 그룹화",
+    "tabMasterHint": "TabMaster는 Unifideck의 라이브러리 탭을 숨깁니다. TabMaster에서 스토어별 탭을 만들려면 컬렉션을 켜세요."
   },
   "storeOwnership": {
     "settingsTitle": "STEAM 상점",

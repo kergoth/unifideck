@@ -1083,7 +1083,8 @@
     "title": "游戏库条目",
     "enabled": "收藏夹已启用",
     "disabled": "收藏夹已禁用",
-    "groupDuplicates": "合并重复项"
+    "groupDuplicates": "合并重复项",
+    "tabMasterHint": "TabMaster 会隐藏 Unifideck 的库标签页。开启收藏夹即可在 TabMaster 中创建各商店的标签页。"
   },
   "storeOwnership": {
     "settingsTitle": "STEAM 商店",

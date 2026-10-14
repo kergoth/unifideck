@@ -1083,7 +1083,8 @@
     "title": "ENTRADAS DE JOGOS",
     "enabled": "Coleções ativadas",
     "disabled": "Coleções desativadas",
-    "groupDuplicates": "Agrupar duplicatas"
+    "groupDuplicates": "Agrupar duplicatas",
+    "tabMasterHint": "O TabMaster oculta as abas de biblioteca do Unifideck. Ative as coleções para criar abas por loja no TabMaster."
   },
   "storeOwnership": {
     "settingsTitle": "LOJA DO STEAM",

@@ -1083,7 +1083,8 @@
     "title": "GAME-ITEMS",
     "enabled": "Collecties ingeschakeld",
     "disabled": "Collecties uitgeschakeld",
-    "groupDuplicates": "Duplicaten groeperen"
+    "groupDuplicates": "Duplicaten groeperen",
+    "tabMasterHint": "TabMaster verbergt de bibliotheektabbladen van Unifideck. Schakel collecties in om in TabMaster tabbladen per winkel te maken."
   },
   "storeOwnership": {
     "settingsTitle": "STEAM-WINKEL",

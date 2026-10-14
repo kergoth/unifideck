@@ -653,7 +653,8 @@
     "title": "GAME SHORTCUTS",
     "enabled": "Collections enabled",
     "disabled": "Collections disabled",
-    "groupDuplicates": "Group duplicates"
+    "groupDuplicates": "Group duplicates",
+    "tabMasterHint": "TabMaster hides Unifideck's library tabs. Turn on collections to build store tabs in TabMaster."
   },
   "storeOwnership": {
     "settingsTitle": "STEAM STORE",

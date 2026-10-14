@@ -1083,7 +1083,8 @@
     "title": "VOCI DEI GIOCHI",
     "enabled": "Collezioni abilitate",
     "disabled": "Collezioni disabilitate",
-    "groupDuplicates": "Raggruppa duplicati"
+    "groupDuplicates": "Raggruppa duplicati",
+    "tabMasterHint": "TabMaster nasconde le schede della libreria di Unifideck. Attiva le raccolte per creare schede per negozio in TabMaster."
   },
   "storeOwnership": {
     "settingsTitle": "NEGOZIO DI STEAM",

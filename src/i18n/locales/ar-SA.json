@@ -1083,7 +1083,8 @@
     "title": "عناصر الألعاب في المكتبة",
     "enabled": "تم تمكين المجموعات",
     "disabled": "تم تعطيل المجموعات",
-    "groupDuplicates": "تجميع التكرارات"
+    "groupDuplicates": "تجميع التكرارات",
+    "tabMasterHint": "يُخفي TabMaster علامات تبويب مكتبة Unifideck. فعّل المجموعات لإنشاء علامات تبويب للمتاجر في TabMaster."
   },
   "storeOwnership": {
     "settingsTitle": "متجر STEAM",

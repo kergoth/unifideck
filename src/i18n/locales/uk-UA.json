@@ -1083,7 +1083,8 @@
     "title": "ЕЛЕМЕНТИ ІГОР",
     "enabled": "Колекції увімкнено",
     "disabled": "Колекції вимкнено",
-    "groupDuplicates": "Групувати дублікати"
+    "groupDuplicates": "Групувати дублікати",
+    "tabMasterHint": "TabMaster приховує вкладки бібліотеки Unifideck. Увімкніть колекції, щоб створити в TabMaster вкладки для кожного магазину."
   },
   "storeOwnership": {
     "settingsTitle": "МАГАЗИН STEAM",

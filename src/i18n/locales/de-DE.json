@@ -1083,7 +1083,8 @@
     "title": "SPIELEINTRÄGE",
     "enabled": "Sammlungen aktiviert",
     "disabled": "Sammlungen deaktiviert",
-    "groupDuplicates": "Duplikate gruppieren"
+    "groupDuplicates": "Duplikate gruppieren",
+    "tabMasterHint": "TabMaster blendet die Bibliotheks-Tabs von Unifideck aus. Aktiviere Sammlungen, um in TabMaster Tabs pro Store anzulegen."
   },
   "storeOwnership": {
     "settingsTitle": "STEAM-SHOP",

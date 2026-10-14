@@ -1083,7 +1083,8 @@
     "title": "ライブラリのゲーム項目",
     "enabled": "コレクションが有効",
     "disabled": "コレクションが無効",
-    "groupDuplicates": "重複をグループ化"
+    "groupDuplicates": "重複をグループ化",
+    "tabMasterHint": "TabMaster は Unifideck のライブラリタブを非表示にします。TabMaster でストア別のタブを作るには、コレクションをオンにしてください。"
   },
   "storeOwnership": {
     "settingsTitle": "STEAM ストア",

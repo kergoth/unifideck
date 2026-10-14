@@ -653,7 +653,8 @@
     "title": "遊戲庫項目",
     "enabled": "已啟用收藏",
     "disabled": "已禁用收藏",
-    "groupDuplicates": "合併重複項目"
+    "groupDuplicates": "合併重複項目",
+    "tabMasterHint": "TabMaster 會隱藏 Unifideck 的收藏庫分頁。開啟收藏集即可在 TabMaster 中建立各商店的分頁。"
   },
   "storeOwnership": {
     "settingsTitle": "STEAM 商店",

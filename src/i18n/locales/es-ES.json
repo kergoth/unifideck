@@ -1083,7 +1083,8 @@
     "title": "ENTRADAS DE JUEGOS",
     "enabled": "Colecciones activadas",
     "disabled": "Colecciones desactivadas",
-    "groupDuplicates": "Agrupar duplicados"
+    "groupDuplicates": "Agrupar duplicados",
+    "tabMasterHint": "TabMaster oculta las pestañas de biblioteca de Unifideck. Activa las colecciones para crear pestañas por tienda en TabMaster."
   },
   "storeOwnership": {
     "settingsTitle": "TIENDA DE STEAM",

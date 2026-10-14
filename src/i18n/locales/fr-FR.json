@@ -1083,7 +1083,8 @@
     "title": "ENTRÉES DE JEUX",
     "enabled": "Collections activées",
     "disabled": "Collections désactivées",
-    "groupDuplicates": "Regrouper les doublons"
+    "groupDuplicates": "Regrouper les doublons",
+    "tabMasterHint": "TabMaster masque les onglets de bibliothèque d'Unifideck. Activez les collections pour créer des onglets par boutique dans TabMaster."
   },
   "storeOwnership": {
     "settingsTitle": "BOUTIQUE STEAM",

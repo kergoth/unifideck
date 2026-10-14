@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "Battle.net istemci yükleyicisi tamamlanmadı. Tekrar deneyin veya ne bildirdiğini görmek için başlatma günlüğüne bakın.",
       "installingBattlenet": "Battle.net üzerinden yükleniyor",
       "installingBattlenetMessage": "Battle.net açılıyor. {{gameTitle}} indirmesini başlatmak için oradan Yükle'ye basın.",
-      "wrapperOpening": "{{client}} açılıyor"
+      "wrapperOpening": "{{client}} açılıyor",
+      "nativeExitedEarlyTitle": "Oyun başladıktan hemen sonra kapandı",
+      "nativeExitedEarly": "Linux sürümü birkaç saniye içinde {{code}} koduyla kapandı. Çıktısı {{log}} dosyasına kaydedildi. Bunu bildirirken bir Capture Logs paketi ekleyin."
     },
     "updateComplete": "Güncelleme Tamamlandı!",
     "updateCompleteMessage": "{{title}} güncellendi.",

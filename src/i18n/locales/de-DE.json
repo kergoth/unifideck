@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "Das Installationsprogramm des Battle.net-Clients wurde nicht abgeschlossen. Versuchen Sie es erneut oder prüfen Sie im Startprotokoll, was gemeldet wurde.",
       "installingBattlenet": "Installation über Battle.net",
       "installingBattlenetMessage": "Battle.net wird geöffnet. Klicken Sie dort auf Installieren, um den Download von {{gameTitle}} zu starten.",
-      "wrapperOpening": "{{client}} wird geöffnet"
+      "wrapperOpening": "{{client}} wird geöffnet",
+      "nativeExitedEarlyTitle": "Spiel direkt nach dem Start beendet",
+      "nativeExitedEarly": "Die Linux-Version wurde nach wenigen Sekunden mit Code {{code}} beendet. Ihre Ausgabe wurde in {{log}} gespeichert. Füge beim Melden ein Capture-Logs-Paket bei."
     },
     "updateComplete": "Update abgeschlossen!",
     "updateCompleteMessage": "{{title}} wurde aktualisiert.",

@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "لم يكتمل مثبّت عميل Battle.net. حاول مرة أخرى أو راجع سجل التشغيل لمعرفة ما أبلغ عنه.",
       "installingBattlenet": "جارٍ التثبيت عبر Battle.net",
       "installingBattlenetMessage": "جارٍ فتح Battle.net. اضغط على «تثبيت» هناك لبدء تنزيل {{gameTitle}}.",
-      "wrapperOpening": "جارٍ فتح {{client}}"
+      "wrapperOpening": "جارٍ فتح {{client}}",
+      "nativeExitedEarlyTitle": "أُغلقت اللعبة فور بدئها",
+      "nativeExitedEarly": "خرج إصدار Linux بالرمز {{code}} خلال ثوانٍ. حُفظ ناتجه في {{log}}. أرفق حزمة Capture Logs عند الإبلاغ عن ذلك."
     },
     "updateComplete": "اكتمل التحديث!",
     "updateCompleteMessage": "تم تحديث {{title}}.",

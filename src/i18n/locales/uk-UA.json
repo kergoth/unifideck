@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "Інсталятор клієнта Battle.net не завершив роботу. Повторіть спробу або перегляньте в журналі запуску, що він повідомив.",
       "installingBattlenet": "Встановлення через Battle.net",
       "installingBattlenetMessage": "Відкриття Battle.net. Натисніть там «Встановити», щоб почати завантаження {{gameTitle}}.",
-      "wrapperOpening": "Відкриття {{client}}"
+      "wrapperOpening": "Відкриття {{client}}",
+      "nativeExitedEarlyTitle": "Гра закрилася одразу після запуску",
+      "nativeExitedEarly": "Версія для Linux завершилася з кодом {{code}} за кілька секунд. Її вивід збережено в {{log}}. Додайте архів Capture Logs до повідомлення про помилку."
     },
     "updateComplete": "Оновлення завершено!",
     "updateCompleteMessage": "{{title}} оновлено.",

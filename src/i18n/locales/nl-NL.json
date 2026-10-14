@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "Het installatieprogramma van de Battle.net-client is niet voltooid. Probeer het opnieuw of bekijk in het startlogboek wat het meldde.",
       "installingBattlenet": "Installeren via Battle.net",
       "installingBattlenetMessage": "Battle.net wordt geopend. Klik daar op Installeren om de download van {{gameTitle}} te starten.",
-      "wrapperOpening": "{{client}} wordt geopend"
+      "wrapperOpening": "{{client}} wordt geopend",
+      "nativeExitedEarlyTitle": "Game sloot direct na het starten",
+      "nativeExitedEarly": "De Linux-versie stopte binnen enkele seconden met code {{code}}. De uitvoer is opgeslagen in {{log}}. Voeg een Capture Logs-bundel toe als je dit meldt."
     },
     "updateComplete": "Update voltooid!",
     "updateCompleteMessage": "{{title}} is bijgewerkt.",

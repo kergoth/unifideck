@@ -413,7 +413,9 @@
       "battlenetClientInstallFailedMessage": "Battle.net 用戶端安裝程式未完成。請重試，或查看啟動記錄了解其回報的內容。",
       "installingBattlenet": "正在透過 Battle.net 安裝",
       "installingBattlenetMessage": "正在開啟 Battle.net。請在其中點選「安裝」以開始下載 {{gameTitle}}。",
-      "wrapperOpening": "正在開啟 {{client}}"
+      "wrapperOpening": "正在開啟 {{client}}",
+      "nativeExitedEarlyTitle": "遊戲啟動後隨即關閉",
+      "nativeExitedEarly": "Linux 版本在數秒內以代碼 {{code}} 結束。其輸出已儲存至 {{log}}。回報此問題時請附上 Capture Logs 記錄包。"
     },
     "updateComplete": "更新完畢！",
     "updateCompleteMessage": "{{title}} 已被更新。",

@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "Le programme d'installation du client Battle.net ne s'est pas terminé. Réessayez, ou consultez le journal de lancement pour voir ce qu'il a signalé.",
       "installingBattlenet": "Installation via Battle.net",
       "installingBattlenetMessage": "Ouverture de Battle.net. Appuyez sur Installer pour lancer le téléchargement de {{gameTitle}}.",
-      "wrapperOpening": "Ouverture de {{client}}"
+      "wrapperOpening": "Ouverture de {{client}}",
+      "nativeExitedEarlyTitle": "Le jeu s'est fermé juste après son lancement",
+      "nativeExitedEarly": "La version Linux s'est arrêtée avec le code {{code}} en quelques secondes. Sa sortie a été enregistrée dans {{log}}. Joignez un paquet Capture Logs à votre signalement."
     },
     "updateComplete": "Mise à jour terminée !",
     "updateCompleteMessage": "{{title}} a été mis à jour.",

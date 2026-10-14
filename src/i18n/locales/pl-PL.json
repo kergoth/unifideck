@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "Instalator klienta Battle.net nie zakończył pracy. Spróbuj ponownie lub sprawdź w dzienniku uruchamiania, co zgłosił.",
       "installingBattlenet": "Instalowanie przez Battle.net",
       "installingBattlenetMessage": "Otwieranie Battle.net. Naciśnij tam Zainstaluj, aby rozpocząć pobieranie {{gameTitle}}.",
-      "wrapperOpening": "Otwieranie {{client}}"
+      "wrapperOpening": "Otwieranie {{client}}",
+      "nativeExitedEarlyTitle": "Gra zamknęła się zaraz po uruchomieniu",
+      "nativeExitedEarly": "Wersja na Linuksa zakończyła działanie z kodem {{code}} w ciągu kilku sekund. Jej wyjście zapisano w {{log}}. Dołącz pakiet Capture Logs do zgłoszenia."
     },
     "updateComplete": "Aktualizacja zakończona!",
     "updateCompleteMessage": "Gra {{title}} została zaktualizowana.",

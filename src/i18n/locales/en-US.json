@@ -413,7 +413,9 @@
       "battlenetClientInstallFailedMessage": "The Battle.net client installer didn't finish. Try again, or check the launch log for what it reported.",
       "installingBattlenet": "Installing via Battle.net",
       "installingBattlenetMessage": "Opening Battle.net. Press Install there to start the download for {{gameTitle}}.",
-      "wrapperOpening": "Opening {{client}}"
+      "wrapperOpening": "Opening {{client}}",
+      "nativeExitedEarlyTitle": "Game closed right after starting",
+      "nativeExitedEarly": "The Linux version exited with code {{code}} within seconds. Its output was saved to {{log}}. Include a Capture Logs bundle when you report this."
     },
     "updateComplete": "Update Complete!",
     "updateCompleteMessage": "{{title}} has been updated.",

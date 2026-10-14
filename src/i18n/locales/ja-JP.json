@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "Battle.net クライアントのインストーラーが完了しませんでした。もう一度お試しいただくか、起動ログで報告内容をご確認ください。",
       "installingBattlenet": "Battle.net 経由でインストール中",
       "installingBattlenetMessage": "Battle.net を開いています。{{gameTitle}} のダウンロードを開始するには、そこで「インストール」を押してください。",
-      "wrapperOpening": "{{client}} を開いています"
+      "wrapperOpening": "{{client}} を開いています",
+      "nativeExitedEarlyTitle": "ゲームが起動直後に終了しました",
+      "nativeExitedEarly": "Linux 版が数秒以内にコード {{code}} で終了しました。出力は {{log}} に保存されています。報告の際は Capture Logs のバンドルを添付してください。"
     },
     "updateComplete": "アップデートが完了しました！",
     "updateCompleteMessage": "{{title}} をアップデートしました。",

@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "Battle.net 클라이언트 설치 프로그램이 완료되지 않았습니다. 다시 시도하거나 실행 로그에서 보고 내용을 확인하세요.",
       "installingBattlenet": "Battle.net을 통해 설치 중",
       "installingBattlenetMessage": "Battle.net을 여는 중입니다. {{gameTitle}} 다운로드를 시작하려면 거기서 설치를 누르세요.",
-      "wrapperOpening": "{{client}}을(를) 여는 중"
+      "wrapperOpening": "{{client}}을(를) 여는 중",
+      "nativeExitedEarlyTitle": "게임이 시작 직후 종료됨",
+      "nativeExitedEarly": "Linux 버전이 몇 초 만에 코드 {{code}}(으)로 종료되었습니다. 출력은 {{log}}에 저장되었습니다. 신고할 때 Capture Logs 번들을 첨부하세요."
     },
     "updateComplete": "업데이트 완료!",
     "updateCompleteMessage": "{{title}} 업데이트가 완료되었습니다.",

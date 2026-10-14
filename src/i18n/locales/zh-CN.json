@@ -404,7 +404,9 @@
       "battlenetClientInstallFailedMessage": "Battle.net 客户端安装程序未完成。请重试，或查看启动日志了解其报告的内容。",
       "installingBattlenet": "正在通过 Battle.net 安装",
       "installingBattlenetMessage": "正在打开 Battle.net。请在其中点击“安装”以开始下载 {{gameTitle}}。",
-      "wrapperOpening": "正在打开 {{client}}"
+      "wrapperOpening": "正在打开 {{client}}",
+      "nativeExitedEarlyTitle": "游戏启动后立即关闭",
+      "nativeExitedEarly": "Linux 版本在几秒内以代码 {{code}} 退出。其输出已保存到 {{log}}。报告此问题时请附上 Capture Logs 日志包。"
     },
     "updateComplete": "更新已完成！",
     "updateCompleteMessage": "{{title}} 已更新。",

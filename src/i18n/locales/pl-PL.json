@@ -443,7 +443,9 @@
     "cloudPullFailed": "Pobieranie zapisu z chmury nie powiodło się",
     "cloudPushDone": "Lokalny zapis przesłany",
     "cloudPushFailed": "Przesyłanie lokalnego zapisu nie powiodło się",
-    "cloudSavePathReset": "Przywrócono automatyczną lokalizację zapisu"
+    "cloudSavePathReset": "Przywrócono automatyczną lokalizację zapisu",
+    "backendUnavailable": "Unifideck nie odpowiada",
+    "backendUnavailableMessage": "Backend Unifideck nie odpowiada, więc wyświetlany jest przycisk Graj ze Steam. Uruchom ponownie Decky lub urządzenie, aby to naprawić."
   },
   "uninstallModal": {
     "title": "Potwierdź odinstalowanie",

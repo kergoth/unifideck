@@ -443,7 +443,9 @@
     "cloudPullFailed": "Cloud-Spielstand-Download fehlgeschlagen",
     "cloudPushDone": "Lokaler Spielstand hochgeladen",
     "cloudPushFailed": "Lokaler Spielstand-Upload fehlgeschlagen",
-    "cloudSavePathReset": "Speicherort auf automatisch zurückgesetzt"
+    "cloudSavePathReset": "Speicherort auf automatisch zurückgesetzt",
+    "backendUnavailable": "Unifideck reagiert nicht",
+    "backendUnavailableMessage": "Das Unifideck-Backend antwortet nicht, daher wird die Spielen-Schaltfläche von Steam angezeigt. Starte Decky oder das Gerät neu, um das zu beheben."
   },
   "uninstallModal": {
     "title": "Deinstallation bestätigen",

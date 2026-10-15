@@ -443,7 +443,9 @@
     "cloudPullFailed": "Error al descargar el guardado en la nube",
     "cloudPushDone": "Guardado local subido",
     "cloudPushFailed": "Error al subir el guardado local",
-    "cloudSavePathReset": "Ubicación de guardado restablecida a automática"
+    "cloudSavePathReset": "Ubicación de guardado restablecida a automática",
+    "backendUnavailable": "Unifideck no responde",
+    "backendUnavailableMessage": "El backend de Unifideck no responde, así que se muestra el botón Jugar de Steam. Reinicia Decky o el dispositivo para solucionarlo."
   },
   "uninstallModal": {
     "title": "Confirmar desinstalación",

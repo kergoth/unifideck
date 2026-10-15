@@ -443,7 +443,9 @@
     "cloudPullFailed": "Falha ao baixar salvamento na nuvem",
     "cloudPushDone": "Salvamento local enviado",
     "cloudPushFailed": "Falha ao enviar salvamento local",
-    "cloudSavePathReset": "Local de salvamento redefinido para automático"
+    "cloudSavePathReset": "Local de salvamento redefinido para automático",
+    "backendUnavailable": "O Unifideck não está respondendo",
+    "backendUnavailableMessage": "O backend do Unifideck não respondeu, então o botão Jogar do próprio Steam está sendo exibido. Reinicie o Decky ou o aparelho para corrigir."
   },
   "uninstallModal": {
     "title": "Confirmar Desinstalação",

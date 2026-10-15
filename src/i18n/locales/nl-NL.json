@@ -443,7 +443,9 @@
     "cloudPullFailed": "Downloaden van cloudopslag mislukt",
     "cloudPushDone": "Lokale opslag geüpload",
     "cloudPushFailed": "Uploaden van lokale opslag mislukt",
-    "cloudSavePathReset": "Opslaglocatie teruggezet op automatisch"
+    "cloudSavePathReset": "Opslaglocatie teruggezet op automatisch",
+    "backendUnavailable": "Unifideck reageert niet",
+    "backendUnavailableMessage": "De backend van Unifideck reageert niet, dus de Spelen-knop van Steam zelf wordt getoond. Herstart Decky of het apparaat om dit op te lossen."
   },
   "uninstallModal": {
     "title": "Deïnstallatie bevestigen",

@@ -443,7 +443,9 @@
     "cloudPullFailed": "下载云端存档失败",
     "cloudPushDone": "已上传本地存档",
     "cloudPushFailed": "上传本地存档失败",
-    "cloudSavePathReset": "存档位置已重置为自动"
+    "cloudSavePathReset": "存档位置已重置为自动",
+    "backendUnavailable": "Unifideck 无响应",
+    "backendUnavailableMessage": "Unifideck 后端没有响应，因此显示 Steam 自带的开始游戏按钮。请重启 Decky 或设备以解决此问题。"
   },
   "uninstallModal": {
     "title": "确认卸载",

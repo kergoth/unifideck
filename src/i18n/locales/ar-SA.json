@@ -443,7 +443,9 @@
     "cloudPullFailed": "فشل تنزيل الحفظ السحابي",
     "cloudPushDone": "تم رفع الحفظ المحلي",
     "cloudPushFailed": "فشل رفع الحفظ المحلي",
-    "cloudSavePathReset": "تمت إعادة تعيين موقع الحفظ إلى تلقائي"
+    "cloudSavePathReset": "تمت إعادة تعيين موقع الحفظ إلى تلقائي",
+    "backendUnavailable": "Unifideck لا يستجيب",
+    "backendUnavailableMessage": "الواجهة الخلفية لـ Unifideck لا تستجيب، لذلك يظهر زر اللعب الخاص بـ Steam بدلاً منها. أعد تشغيل Decky أو الجهاز لحل المشكلة."
   },
   "uninstallModal": {
     "title": "تأكيد إلغاء التثبيت",

@@ -443,7 +443,9 @@
     "cloudPullFailed": "Не удалось скачать облачное сохранение",
     "cloudPushDone": "Локальное сохранение загружено",
     "cloudPushFailed": "Не удалось загрузить локальное сохранение",
-    "cloudSavePathReset": "Папка сохранений сброшена на автоматическую"
+    "cloudSavePathReset": "Папка сохранений сброшена на автоматическую",
+    "backendUnavailable": "Unifideck не отвечает",
+    "backendUnavailableMessage": "Бэкенд Unifideck не отвечает, поэтому показана стандартная кнопка «Играть» Steam. Перезапустите Decky или устройство, чтобы это исправить."
   },
   "uninstallModal": {
     "title": "Подтверждение удаления",

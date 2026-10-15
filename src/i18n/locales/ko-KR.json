@@ -443,7 +443,9 @@
     "cloudPullFailed": "클라우드 저장 데이터 다운로드 실패",
     "cloudPushDone": "로컬 저장 데이터 업로드 완료",
     "cloudPushFailed": "로컬 저장 데이터 업로드 실패",
-    "cloudSavePathReset": "저장 위치를 자동으로 재설정했습니다"
+    "cloudSavePathReset": "저장 위치를 자동으로 재설정했습니다",
+    "backendUnavailable": "Unifideck이 응답하지 않습니다",
+    "backendUnavailableMessage": "Unifideck 백엔드가 응답하지 않아 Steam 기본 플레이 버튼을 표시합니다. Decky 또는 기기를 다시 시작하세요."
   },
   "uninstallModal": {
     "title": "설치 제거 확인",

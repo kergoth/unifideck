@@ -443,7 +443,9 @@
     "cloudPullFailed": "Не вдалося завантажити хмарне збереження",
     "cloudPushDone": "Локальне збереження вивантажено",
     "cloudPushFailed": "Не вдалося вивантажити локальне збереження",
-    "cloudSavePathReset": "Розташування збережень скинуто на автоматичне"
+    "cloudSavePathReset": "Розташування збережень скинуто на автоматичне",
+    "backendUnavailable": "Unifideck не відповідає",
+    "backendUnavailableMessage": "Бекенд Unifideck не відповідає, тому показано стандартну кнопку «Грати» Steam. Перезапустіть Decky або пристрій, щоб це виправити."
   },
   "uninstallModal": {
     "title": "Підтвердження видалення",

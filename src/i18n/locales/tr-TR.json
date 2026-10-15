@@ -443,7 +443,9 @@
     "cloudPullFailed": "Bulut kaydı indirilemedi",
     "cloudPushDone": "Yerel kayıt yüklendi",
     "cloudPushFailed": "Yerel kayıt yüklenemedi",
-    "cloudSavePathReset": "Kayıt konumu otomatiğe sıfırlandı"
+    "cloudSavePathReset": "Kayıt konumu otomatiğe sıfırlandı",
+    "backendUnavailable": "Unifideck yanıt vermiyor",
+    "backendUnavailableMessage": "Unifideck arka ucu yanıt vermiyor, bu yüzden Steam'in kendi Oyna düğmesi gösteriliyor. Düzeltmek için Decky'yi veya cihazı yeniden başlatın."
   },
   "uninstallModal": {
     "title": "Kaldırmayı Onayla",

@@ -443,7 +443,9 @@
     "cloudPullFailed": "クラウドセーブのダウンロードに失敗しました",
     "cloudPushDone": "ローカルセーブがアップロードされました",
     "cloudPushFailed": "ローカルセーブのアップロードに失敗しました",
-    "cloudSavePathReset": "セーブデータの場所を自動に戻しました"
+    "cloudSavePathReset": "セーブデータの場所を自動に戻しました",
+    "backendUnavailable": "Unifideckが応答しません",
+    "backendUnavailableMessage": "Unifideckのバックエンドが応答しないため、Steam標準のプレイボタンを表示しています。Deckyまたは本体を再起動してください。"
   },
   "uninstallModal": {
     "title": "アンインストールの確認",

@@ -315,6 +315,10 @@ class WinePrefixResolver:
             return None
 
         if native_linux:
+            # ``<home>/AppData/...`` is a Windows location written with the
+            # generic home token; a native game never writes there.
+            if len(segments) > 1 and segments[1].lower() == "appdata":
+                return None
             base = cls._ludusavi_linux_base_for(segments[0].lower(), install_path)
             username = os.environ.get("USER") or "deck"
         else:
@@ -325,6 +329,11 @@ class WinePrefixResolver:
             username = "steamuser"
         if base is None:
             return None
+
+        # A row naming one file (``<base>/EOBDATA.SAV``) means "this file";
+        # its folder is the save dir, not a folder named after the file.
+        if len(segments) > 1 and _FILE_NAME_RE.search(segments[-1]) and "*" not in segments[-1]:
+            segments = segments[:-1]
 
         out_parts = [base]
         for seg in segments[1:]:
@@ -344,6 +353,11 @@ class WinePrefixResolver:
         resolved = os.path.normpath(os.path.join(*out_parts))
         resolved = cls.realize_case_insensitive(resolved)
         return os.path.realpath(resolved)
+
+
+#: A trailing ``name.ext`` (1-4 char extension): a file, not a folder.
+#: ``com.Roboatino.ShogunShowdown`` has a 14-char "extension", so stays a dir.
+_FILE_NAME_RE = re.compile(r"\.[A-Za-z0-9]{1,4}$")
 
 
 # ── title-matched save-dir auto-detection ─────────────────────────────

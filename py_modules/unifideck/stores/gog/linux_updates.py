@@ -48,11 +48,10 @@ def pick_linux_installer_version(
     if not linux:
         return None
     lang = (language or "").split("-")[0].lower()
-    chosen = linux[0] if len(linux) == 1 else (
-        next((i for i in linux if i.get("language") == lang), None)
-        or next((i for i in linux if i.get("language") == "en"), None)
-        or linux[0]
-    )
+    # A lone installer falls through to ``linux[0]`` whatever its language.
+    chosen = next((i for i in linux if i.get("language") == lang), None)
+    if chosen is None:
+        chosen = next((i for i in linux if i.get("language") == "en"), linux[0])
     version = chosen.get("version")
     return str(version) if version else None
 

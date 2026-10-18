@@ -335,24 +335,27 @@ class WinePrefixResolver:
         if len(segments) > 1 and _FILE_NAME_RE.search(segments[-1]) and "*" not in segments[-1]:
             segments = segments[:-1]
 
-        out_parts = [base]
-        for seg in segments[1:]:
-            low = seg.lower()
-            # Stop at the first dynamic segment; sync the containing directory.
-            # ``<osUserName>`` is the one token we expand inline rather than
-            # stop at (it's a known value, not a wildcard).
-            if "*" in seg or low == "<storeuserid>" or (
-                seg.startswith("<") and seg.endswith(">") and low != "<osusername>"
-            ):
-                break
-            if low == "<osusername>":
-                out_parts.append(username)
-                continue
-            out_parts.append(seg)
-
+        out_parts = [base, *cls._ludusavi_literal_segments(segments[1:], username)]
         resolved = os.path.normpath(os.path.join(*out_parts))
         resolved = cls.realize_case_insensitive(resolved)
         return os.path.realpath(resolved)
+
+    @staticmethod
+    def _ludusavi_literal_segments(segments: list[str], username: str) -> list[str]:
+        """Return the literal segments before the first dynamic one."""
+        out: list[str] = []
+        for seg in segments:
+            low = seg.lower()
+            # ``<osUserName>`` is the one token we expand inline rather than
+            # stop at (it's a known value, not a wildcard).
+            if low == "<osusername>":
+                out.append(username)
+                continue
+            # Stop at the first dynamic segment; sync the containing directory.
+            if "*" in seg or (seg.startswith("<") and seg.endswith(">")):
+                break
+            out.append(seg)
+        return out
 
 
 #: A trailing ``name.ext`` (1-4 char extension): a file, not a folder.

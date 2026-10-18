@@ -29,6 +29,7 @@ from pathlib import Path
 from typing import Any
 
 from unifideck.core import marker_sweep
+from unifideck.core.safe_delete import delete_game_prefix
 from unifideck.core.types import Result
 from unifideck.core.types.identifiers import (
     InvalidIdentifierError,
@@ -249,8 +250,9 @@ class DownloadRPCMixin:
         trash button / Uninstall pill live on the app details page),
         so — like :meth:`update_game` — we resolve it back to its
         ``(store, game_id)`` via the sync layer and dispatch to the
-        store. ``delete_prefix`` is forwarded so connectors that run
-        games under Proton can also remove the Wine prefix.
+        store. ``delete_prefix`` is honoured here, once, for every store
+        (``core.safe_delete.delete_game_prefix``); it is still forwarded
+        because the wrapper stores delete their own prefix.
 
         Earlier this method took ``(store, game_id)`` directly, but
         the frontend sends a single ``app_id``; the numeric value
@@ -285,6 +287,14 @@ class DownloadRPCMixin:
         # leaves our manifest marker (a stub dir) behind. The marker proves
         # the folder is ours, so this only ever removes a dir we created.
         await asyncio.to_thread(marker_sweep.sweep_game, store, game_id)
+        # One prefix deletion for every store, so a new store cannot forget
+        # it (GameVault did). Only after a successful uninstall: a game whose
+        # files are still there still launches and keeps its saves in the
+        # prefix. Wrapper stores delete their own, the game being inside it.
+        from unifideck.launcher.wrapper_stores import is_wrapper_store
+
+        if delete_prefix and getattr(result, "success", False) and not is_wrapper_store(store):
+            await asyncio.to_thread(delete_game_prefix, game_id)
         return result
 
     async def get_available_updates(self) -> Any:

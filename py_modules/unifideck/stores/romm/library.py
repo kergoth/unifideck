@@ -47,32 +47,6 @@ def _text(value: Any) -> str:
     return value.strip() if isinstance(value, str) else ""
 
 
-def _same_game(left: dict[str, Any], right: dict[str, Any]) -> bool:
-    """Whether two entries are the same game on different platforms.
-
-    Every field both entries carry an ID for is compared, and any mismatch
-    means different games, even when the names are identical. Only when no
-    field has an ID on both sides does the exact title decide, which keeps a
-    Windows build from being hidden behind an unrelated Linux game that happens
-    to share its name.
-    """
-    comparable = False
-    for field in ("igdb_id", "ss_id"):
-        left_id, right_id = left.get(field), right.get(field)
-        if not (
-            type(left_id) is int and left_id > 0
-            and type(right_id) is int and right_id > 0
-        ):
-            continue
-        comparable = True
-        if left_id != right_id:
-            return False
-    if comparable:
-        return True
-    name = _text(left.get("name"))
-    return bool(name) and name == _text(right.get("name"))
-
-
 def _cover_url(item: dict[str, Any], server_url: str) -> str | None:
     for field in ("path_cover_large", "path_cover_small", "url_cover"):
         candidate = _text(item.get(field))
@@ -170,13 +144,17 @@ class RomMCatalog:
             offset += len(page)
 
     def _build_games(self, items: list[dict[str, Any]], server_url: str) -> list[Game]:
-        linux_items = [i for i in items if i.get("platform_slug") == "linux"]
+        linux_names = {
+            _text(i.get("name")) for i in items
+            if i.get("platform_slug") == "linux" and _text(i.get("name"))
+        }
         games = []
         for item in items:
             slug = item.get("platform_slug")
             if slug not in ALLOWED_PLATFORM_SLUGS:
                 continue
-            if slug == "win" and any(_same_game(item, native) for native in linux_items):
+            name = _text(item.get("name"))
+            if slug == "win" and name and name in linux_names:
                 continue
             games.append(self._map(item, server_url))
         return games

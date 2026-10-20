@@ -1,6 +1,6 @@
 # Unifideck — Architecture & Build Process
 
-> **Version:** 0.7.4 · **Last re-synced:** 2026-08-24 (see `docs/architecture-audit.md`)
+> **Version:** 0.7.7 · **Last re-synced:** 2026-08-24 (see `docs/architecture-audit.md`) · **0.7.7 pass:** 2026-10-20 added the `native_entry`, `safe_delete`, `ssl_helpers` and cloud-save rows only; the rest was not re-measured
 
 ---
 
@@ -86,7 +86,8 @@ Infrastructure primitives. No store or service knowledge.
 | `cross_source_dedupe.py`        | Drops a title owned on two stores at once |
 | `game_grouping.py`              | Display-only: stamps `dedupe_group_id`, `edition_label` and the owned Steam copy on each game, for the "Group duplicates" tabs and the game-page store switcher. Never removes a shortcut |
 | `game_identity.py`              | Which library rows and owned Steam apps are the same game (any version of it). One rule shared by `game_grouping.py` and the ownership ribbon's join |
-| `safe_delete.py`                | Guarded delete used by every sweep        |
+| `safe_delete.py`                | Guarded delete used by every sweep. `delete_game_prefix` is the one Uninstall prefix delete for every non-wrapper store |
+| `net/ssl_helpers.py`            | TLS contexts. `ssl_ctx_strict` (system store plus certifi) for every Microsoft endpoint; `ssl_ctx_permissive` for the other stores. The self-updater builds its own certifi context |
 | `cleanup_sweeps.py`             | The blocking sweeps behind "delete all data" |
 | `marker_sweep.py`               | Install-dir ownership via `.unifideck*` markers |
 | `stale_installs.py`             | Detects install records with no files left |
@@ -149,7 +150,7 @@ Infrastructure services that subscribe to the EventBus and own cross-cutting con
 | ---------------------------------- | --------------------------------------------- |
 | `services/download/`               | Download queue, progress tracking, worker     |
 | `services/playtime/`               | Session recording, DB persistence             |
-| `services/cloud_save/`             | Save sync — upload/download/conflict          |
+| `services/cloud_save/`             | Save sync — upload/download/conflict. `gog_native.py` maps GOG saves onto Linux-native builds (Unity, DOSBox) |
 | `services/shortcut/`               | Steam VDF shortcut create/delete/update       |
 | `services/artwork/`                | SteamGridDB artwork fetching                  |
 | `services/launcher/`               | Game launch orchestration, circuit breaker    |

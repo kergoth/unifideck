@@ -83,8 +83,20 @@ Multiple versions of a game on the same platform appear as separate Steam
 entries. RomM's metadata may give them identical names: for example, Lighthouse
 and BanjoRecomp builds can both appear as **Banjo-Kazooie**.
 
-Unifideck does not currently provide variant labels or a selector. To tell those
-entries apart in Steam, give them distinct names or cover art on the RomM server.
+With **Group duplicates** turned on, those entries share one tile, and the store
+switcher on the game's page lists each one. Rows that would otherwise read the
+same are told apart by the platform and the tags in the file name, for example
+`RomM Standard Edition Linux · BanjoRecomp`. Tags such as `(igdb-1234)` that
+only identify the game to a metadata provider are left out. Entries whose names,
+platforms and tags are all the same keep identical rows.
+
+Among entries from RomM, the tile and the first switcher row go to a Linux entry
+over a Windows one. Between entries on the same platform, the one you mark as the
+main version on the RomM server comes first. A change on the server shows up
+after the next sync.
+
+With **Group duplicates** off, each entry keeps its own tile. To tell those apart
+in the library, give them distinct names or cover art on the RomM server.
 
 For entries already in Steam, use **Force Sync** to refresh their names. Choose
 **Resync Artwork** to replace existing covers, or **Keep Artwork** to update

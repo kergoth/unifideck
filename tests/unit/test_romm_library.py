@@ -66,9 +66,20 @@ async def test_linux_wins_only_for_exact_nonempty_names(catalog, romm_server):
     ], 5)])
     games = await catalog.fetch()
     assert {g.store_game_id for g in games} == {PREFIX + n for n in ("1", "3", "4", "5")}
-    by_id = {g.store_game_id.removeprefix(PREFIX): g for g in games}
-    assert by_id["1"].metadata["prefer_native"] is True
-    assert by_id["3"].metadata["prefer_native"] is False
+
+
+async def test_games_carry_variant_labels_and_rank(catalog, romm_server):
+    serve(romm_server, [page([
+        rom(1, "linux", "Game", platform_display_name="Linux", tags=["Ghostship", "igdb-5"],
+            rom_user={"is_main_sibling": True}),
+        rom(2, "win", "Other", platform_display_name="Windows", tags=[]),
+    ], 2)])
+    by_id = {g.store_game_id.removeprefix(PREFIX): g for g in await catalog.fetch()}
+    assert by_id["1"].metadata["disambiguators"] == ["Linux", "Ghostship"]
+    assert by_id["1"].metadata["default_rank"] == 0
+    assert by_id["2"].metadata["disambiguators"] == ["Windows"]
+    assert by_id["2"].metadata["default_rank"] == 3
+    assert "prefer_native" not in by_id["1"].metadata
 
 
 async def test_later_page_failure_is_not_a_partial_catalog(catalog, romm_server):

@@ -11,6 +11,7 @@ from unifideck.core.types import Game
 from .auth import ALLOWED_PLATFORM_SLUGS, STORE_NAME, RomMAuth, eligible_variants
 from .client import RomMAPIError, RomMClient
 from .identity import rom_id_for_server, scoped_game_id
+from .variants import variant_metadata
 
 logger = logging.getLogger(__name__)
 
@@ -172,7 +173,7 @@ class RomMCatalog:
         size = item.get("fs_size_bytes")
         metadata: dict[str, Any] = {
             "platform_slug": item.get("platform_slug"),
-            "prefer_native": item.get("platform_slug") == "linux",
+            **variant_metadata(item),
         }
         if cover:
             metadata["cover_url"] = cover
